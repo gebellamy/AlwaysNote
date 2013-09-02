@@ -4,7 +4,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :username, :unique => true
       t.string :password_digest
       t.string :session_token
-      t.string :email, :unique => true
+      t.string :email
+      t.string :base_email, :unique => true
       t.string :auth_token
 
       t.timestamps
