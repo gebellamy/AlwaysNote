@@ -1,9 +1,6 @@
 <h1>Sign In!</h1>
 
 <form action="<%= session_url %>" method="POST">
-	<label for="user_email">Email</label>
-	<input type="text" name="user[email]" id="user_email">
-	<br>
 	<label for="user_username">Username</label>
 	<input type="text" name="user[username]" id="user_username">
 	<br>
@@ -12,5 +9,7 @@
 	<br>
 	<input type="hidden" name="authenticity_token" 
 		value="<%= form_authenticity_token %>">
-	<input type="submit" value="Sign Up">
+	<input type="submit" value="Sign In">
 </form>
+<%= button_to "Forgot Password?", users_forgot_password_url, 
+	:method => :get %>

@@ -41,10 +41,23 @@ class UsersController < ApplicationController
     @user = User.find_by_id(params[:id])
     if @user && @user.verify_password(params[:user][:old_password])
       @user.password = params[:user][:new_password]
+      @user.save
       redirect_to root_url
     else
       redirect_to new_session_url
     end
+  end
+  
+  def forgot_password
+    render :forgot_password
+  end
+  
+  def send_password
+    @user = User.find_by_username(params[:user][:username])
+    if @user
+      Notifier.forgot_password_email(@user).deliver
+    end
+    redirect_to root_url
   end
   
 end

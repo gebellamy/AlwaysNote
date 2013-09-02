@@ -13,7 +13,7 @@ class Notifier < ActionMailer::Base
     @random_password = SecureRandom.urlsafe_base64(10)
     @user.password = @random_password
     @user.save
-    @url = "http://localhost:3000/users/" + @user.id + "/edit"
+    @url = "http://localhost:3000/users/" + @user.id.to_s + "/edit"
     mail( :to => @user.email,
           :subject => 'AlwaysNote Password Reset' )
   end
