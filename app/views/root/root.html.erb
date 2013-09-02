@@ -1,2 +1,6 @@
-Current User: <%= current_user %>
-Current user authenticated?: <%= authenticated? %>
+<% if current_user %>
+	Current User: <%= current_user %>
+	Current user authenticated?: <%= authenticated? %>
+<% else %>
+	Nobody logged in
+<% end %>
