@@ -1,6 +1,10 @@
+<h2>User's notebooks page goes here!</h2>
+
 <% if current_user %>
-	Current User: <%= current_user %>
+	Current User: <%= current_user.username %>
 	Current user authenticated?: <%= authenticated? %>
+	<%= button_to "Logout", new_session_url, :method => :delete %>
 <% else %>
 	Nobody logged in
+	<%= button_to "Login", new_sesion_url, :method => :get %>
 <% end %>
