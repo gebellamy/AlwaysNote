@@ -23,4 +23,8 @@ module SessionsHelper
     !!current_user
   end
   
+  def authenticated?
+    current_user.authenticated
+  end
+  
 end
