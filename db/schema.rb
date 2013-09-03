@@ -11,7 +11,39 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130902203201) do
+ActiveRecord::Schema.define(:version => 20130903000757) do
+
+  create_table "contributions", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "notebook_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "contributions", ["notebook_id"], :name => "index_contributions_on_notebook_id"
+  add_index "contributions", ["user_id", "notebook_id"], :name => "index_contributions_on_user_id_and_notebook_id"
+  add_index "contributions", ["user_id"], :name => "index_contributions_on_user_id"
+
+  create_table "notebooks", :force => true do |t|
+    t.integer  "owner_id"
+    t.string   "title",      :default => "New Notebook"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+  end
+
+  add_index "notebooks", ["owner_id"], :name => "index_notebooks_on_owner_id"
+
+  create_table "notes", :force => true do |t|
+    t.integer  "owner_id",                                 :null => false
+    t.integer  "notebook_id",                              :null => false
+    t.string   "title",       :default => "Untitled Note"
+    t.text     "body"
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+  end
+
+  add_index "notes", ["notebook_id"], :name => "index_notes_on_notebook_id"
+  add_index "notes", ["owner_id"], :name => "index_notes_on_owner_id"
 
   create_table "users", :force => true do |t|
     t.string   "username"
