@@ -4,7 +4,7 @@ window.AlwaysNote = {
   Views: {},
   Routers: {},
   initialize: function() {
-    alert('Hello from Backbone!');
+    console.log("Alerts are annoying");
   }
 };
 
