@@ -5,4 +5,6 @@ AlwaysNote::Application.routes.draw do
   resources :users, :only => [:create, :new, :show, :update, :edit]
   resource :session, :only => [:create, :new, :destroy]
   root to: 'root#root'
+  resources :notebooks, :only => [:create, :destroy, :show, :index, :update]
+  resources :notes, :only => [:create, :destroy, :show, :index, :update]
 end

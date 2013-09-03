@@ -1,0 +1,10 @@
+<div class="notebooks_bar">
+	New Notebook Button | Find a Notebook Search | SORT_OPTIONS MAYBE
+</div>
+
+<% notebooks.each(function(notebook) { %>
+	<div class="notebook_show" data-id="<%= notebook.id %>">
+		<div class="notebook_title"><%= notebook.escape("title") %></div>
+		<div class="num_notes"><%= notes.length %> Notes</div>
+	</div>
+<% }) %>
