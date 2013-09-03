@@ -1,0 +1,11 @@
+<div class="recent">RECENT NOTES
+	<% recentNotes.forEach(function(note) { %>
+		<div class="recent_note" data-id="<%= note.id %>">
+			&#9734; <%= note.escape("title") %>
+		</div>
+	<% }); %>
+</div>
+
+<div class="selector" id="notes">Notes</div>
+<div class="selector" id="notebooks">Notebooks</div>
+<div class="selector" id="tags">Tags</div>

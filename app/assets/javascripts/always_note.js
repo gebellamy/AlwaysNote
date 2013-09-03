@@ -7,6 +7,7 @@ window.AlwaysNote = {
     console.log("Alerts are annoying");
 	AlwaysNote.notebooks = new AlwaysNote.Collections.Notebooks();
 	AlwaysNote.notes = new AlwaysNote.Collections.Notes();
+	AlwaysNote.user = JSON.parse($("#bootstrapped_user").html());
 	
 	AlwaysNote.notebooks.fetch({
 		success: function() {

@@ -11,3 +11,107 @@
  *= require_self
  *= require_tree .
  */
+
+.container {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+/* Navbar */
+
+.navbar {
+	background-color: #ABABAB;
+	padding-left: 10px;
+	padding-top: 5px;
+	height: 30px;
+}
+
+.user_info {
+	
+}
+
+/* Sidebar */
+
+.sidebar {
+	background-color: #343434;
+	width: 200px;
+	float:left;
+	height: 100%;
+}
+
+.selector {
+	margin-left: 5px;
+	font-size: 30px;
+	color: #DDDDDD;
+}
+
+.recent_note {
+	margin-left: 8px;
+	font-size: 16px;
+	color: #EEEEEE;
+}
+
+.recent {
+	margin-top: 10px;
+	margin-left: 5px;
+	margin-right: 5px;
+	padding-bottom: 10px;
+	margin-bottom: 5px;
+	border-bottom: 1px solid #222222;
+	color: #EEEEEE;
+}
+
+
+/* Notebooks Index */
+
+.notebooks {
+	background-color: #DDDDDD;
+	height: 100%;
+	margin-left: 200px;
+}
+
+.notebooks_bar {
+	padding-top: 10px;
+	height: 30px;
+	border-bottom: 1px solid #AAAAAA;
+	margin-left: 5px;
+	margin-right: 5px;
+	display: block;
+}
+
+.notebook_show {
+	border-radius: 10px;
+	float: left;
+	margin: 20px 20px 20px 20px;
+	width: 150px;
+	height: 150px;
+	background-color: #2983CC;
+	box-shadow: 10px 10px 5px #888888;
+}
+
+.notebook_title {
+	border-radius: 5px;
+	padding-top: 10px;
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-top: 20px;
+	text-align: center;
+	height: 65px;
+	font-size: 18px;
+	background-color: #1F6299;
+	color: #EEEEEE;
+	border: 1px solid #144063;
+}
+
+.num_notes {
+	text-align: center;
+	position: relative;
+	top: 30px;
+	color: #123B5C;
+	
+}

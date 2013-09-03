@@ -49,4 +49,8 @@ class User < ActiveRecord::Base
     end
   end
   
+  def to_json
+    super(:only => [:username, :id])
+  end
+  
 end

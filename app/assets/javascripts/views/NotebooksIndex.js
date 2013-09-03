@@ -6,7 +6,9 @@ AlwaysNote.Views.NotebooksIndex = Backbone.View.extend({
 	},
 	
 	render: function() {
-		var content = this.template({ notebooks: this.notebooks });
+		var content = this.template({ 
+			notebooks: this.notebooks
+		});
 		this.$el.html(content);
 		return this;
 	}

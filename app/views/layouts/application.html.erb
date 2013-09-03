@@ -6,19 +6,27 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   
-  
-  <% if current_user %>
-  	Current User: <%= current_user.username %>
-  	Current user authenticated?: <%= authenticated? %>
-  	<%= button_to "Logout", session_url, :method => :delete %>
-  <% else %>
-  	Nobody logged in
-  	<%= button_to "Login", new_session_url, :method => :get %>
-  <% end %>
+  <script type="application/json" id="bootstrapped_user">
+    { "user": <%= current_user.to_json.html_safe %> }
+  </script>
 </head>
-<body>
-	<div class="navbar"></div>
-	<div class="sidebar"></div>
+<body>	
+	<div class="container">
+		<div class="navbar">
+		    <div class="user_info">
+				<% if current_user %>
+		    		<%= current_user.username %>
+		    		<button href="/session/logout">Log Out</buttn>
+		   		<% else %>
+		    		<%= button_to "Login", new_session_url, :method => :get %>
+		    	<% end %>
+			</div>
+		</div>
+		<div class="sidebar"></div>
+		<div class="notes_sidebar"></div>
+		<div class="notes"></div>
+		<div class="notebooks"></div>
+	</div>
 <%= yield %>
 
 </body>
