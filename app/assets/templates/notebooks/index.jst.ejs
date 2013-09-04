@@ -1,15 +1,18 @@
 <div class="notebooks_bar">
-	<button href="#/notebooks/new">&#65291; New Notebook</button>
-	| Find a Notebook Search Area | SORT OPTIONS MAYBE GO HERE
+	<button class="new_notebook">&#65291; New Notebook</button>
+	<form>
+		<input type="search" value="Find a Notebook" class="search">
+	</form>	
 </div>
 
 <% notebooks.each(function(notebook) { %>
 	<div class="notebook_show" data-id="<%= notebook.id %>">
-		<div class="notebook_title" data-id="<%= notebook.id%>">
+		<div class="notebook_title" data-id="<%= notebook.id%>" 
+			id="notebook<%= notebook.id%>">
 			<%= notebook.escape("title") %>
 		</div>
 		<div class="num_notes">
-			<strong><%= notebook.attributes.notes.length %> Notes</strong>
+			<%= notebook.attributes.notes.length %> Notes
 		</div>
 	</div>
 <% }) %>

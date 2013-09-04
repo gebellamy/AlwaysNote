@@ -12,6 +12,10 @@
  *= require_tree .
  */
 
+body {
+	font-family: Arial, sans-serif;
+}
+
 .container {
 	position: absolute;
 	height: 100%;
@@ -32,7 +36,17 @@
 }
 
 .user_info {
-	
+	float:left;
+}
+
+.new_note {
+	margin-left: 40%;
+	margin-right: 40%;
+}
+
+.new_note_button {
+	width: 250px;
+	font-size: 12px;
 }
 
 /* Sidebar */
@@ -45,6 +59,7 @@
 }
 
 .selector {
+	padding-top: 20px;
 	margin-left: 5px;
 	font-size: 30px;
 	color: #DDDDDD;
@@ -52,7 +67,6 @@
 
 .recent_note {
 	margin-left: 8px;
-	font-size: 16px;
 	color: #EEEEEE;
 }
 
@@ -114,4 +128,19 @@
 	top: 30px;
 	color: #123B5C;
 	
+}
+
+.highlighted_notebook {
+	border: 5px solid #2BEAFF;
+	margin: 15px 15px 15px 15px;
+}
+
+.new_notebook {
+	float: left;
+	height: 20px;
+}
+.search {
+	margin-left: 15px;
+	float: left;
+	height: 15px;
 }

@@ -12,7 +12,9 @@ AlwaysNote.Routers.Notebooks = Backbone.Router.extend({
 	},
 	
 	notebooksIndexView: function() {
-		//AlwaysNote.currentView.destroy();
+		if(AlwaysNote.currentView) {
+			AlwaysNote.currentView.destroy();
+		}
 		var view = new AlwaysNote.Views.NotebooksIndex(AlwaysNote.notebooks);
 		AlwaysNote.currentView = view;
 		$('.notebooks').html(view.render().$el);
