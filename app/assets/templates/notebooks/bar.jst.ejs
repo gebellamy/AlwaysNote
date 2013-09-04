@@ -1,0 +1,10 @@
+<div class="notebooks_bar">
+	<button class="new_notebook">&#65291; New Notebook</button>
+	<form class="search">
+		<% if(!AlwaysNote.titleSearch) { %>
+		<input type="search" name="title" value="Find a Notebook">
+		<% } else { %>
+		<input type="search" name="title" value="<%= AlwaysNote.titleSearch %>">
+		<% } %>
+	</form>	
+</div>
