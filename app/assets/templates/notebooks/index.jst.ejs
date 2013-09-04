@@ -1,12 +1,16 @@
 <div class="notebooks_bar">
 	<button class="new_notebook">&#65291; New Notebook</button>
-	<form>
-		<input type="search" value="Find a Notebook" class="search">
+	<form class="search">
+		<% if(!AlwaysNote.titleSearch) { %>
+		<input type="search" name="title" value="Find a Notebook">
+		<% } else { %>
+		<input type="search" name="title" value="<%= AlwaysNote.titleSearch %>">
+		<% } %>
 	</form>	
 </div>
 
 <% notebooks.each(function(notebook) { %>
-	<div class="notebook_show" data-id="<%= notebook.id %>">
+	<div class="notebook_show" data-id="<%= notebook.id %>" id="nb<%= notebook.id%>">
 		<div class="notebook_title" data-id="<%= notebook.id%>" 
 			id="notebook<%= notebook.id%>">
 			<%= notebook.escape("title") %>

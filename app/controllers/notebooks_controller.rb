@@ -13,8 +13,10 @@ class NotebooksController < ApplicationController
   
   def create
     @notebook = Notebook.new(params[:notebook])
+    @notebook.owner_id = current_user.id
     if @notebook.save
-      render :json => @notebook
+      Contribution.create!({:user_id => current_user.id, :notebook_id => @notebook.id })
+      render :show, :handlers => [:rabl]
     else
       render :json => @notebook.errors.full_messages, :status => 422
     end
@@ -28,14 +30,19 @@ class NotebooksController < ApplicationController
     @notebook = Notebook.find_by_id(params[:id])
     @notebook.title = params[:title]
     if @notebook.save
-      render :json => @notebook
+      render :show, :handlers => [:rabl]
     else
       render :json => @notebook.errors.full_messages, :status => 422
     end
   end
   
   def show
-    
+    @notebook = Notebook.find_by_id(params[:id])
+    if @notebook
+      render :show, :handlers => [:rabl]
+    else
+      render :json => @notebook.errors.full_messages, :status => 422
+    end
   end
   
 end

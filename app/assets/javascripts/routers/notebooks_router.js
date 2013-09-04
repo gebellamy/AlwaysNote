@@ -17,6 +17,10 @@ AlwaysNote.Routers.Notebooks = Backbone.Router.extend({
 		}
 		var view = new AlwaysNote.Views.NotebooksIndex(AlwaysNote.notebooks);
 		AlwaysNote.currentView = view;
+		var barView = new AlwaysNote.Views.NotebooksBar();
+		$('.notebooks_bar').html(barView.render().$el);
 		$('.notebooks').html(view.render().$el);
-	}
+	},
+	
+	
 })
