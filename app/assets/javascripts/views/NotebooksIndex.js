@@ -10,9 +10,26 @@ AlwaysNote.Views.NotebooksIndex = Backbone.View.extend({
 		"dblclick .notebook_title" : "editTitle",
 		"submit .notebook_title_form" : "saveTitle",
 		"click button.new_notebook" : "newNotebook",
+		"keyup .new_notebook" : "exitForm",
 		"submit form.create_new_notebook" : "createNotebook",
 		"keyup form.search" : "search",
-		"submit form.search" : "doNothing"
+		"submit form.search" : "doNothing",
+		"dblclick .notebook_show" : "viewNotebook"
+	},
+	
+	viewNotebook: function(event) {
+		if($(event.target).is($('.notebook_title'))) {
+			return;
+		}
+		console.log("Double-clicked a notebook");
+		var route = "notebooks/" + $(event.currentTarget).attr("data-id");
+		Backbone.history.navigate(route, {trigger: true});
+	},
+	
+	exitForm: function(event) {
+		if(event.which == 27) {
+			this.render();
+		}
 	},
 	
 	doNothing: function(event) {
@@ -21,24 +38,23 @@ AlwaysNote.Views.NotebooksIndex = Backbone.View.extend({
 	
 	search: function(event) {
 		var that = this;
-		if(!AlwaysNote.searchingNotebooks)
+		if(!AlwaysNote.searchingNotebooks || event.which == 8)
 		{
 			AlwaysNote.searchingNotebooks = AlwaysNote.notebooks.clone();
 		}
 		if(event.which !== 16 && event.which !== 13 && event.which !== 27) {
-			AlwaysNote.titleSearch = $(event.currentTarget).serializeJSON()["title"];
+			var titleSearch = $(event.currentTarget).serializeJSON()["title"].toLowerCase();
 			var searching = AlwaysNote.searchingNotebooks.clone();
 			searching.each(function(notebook) {
 				var title = notebook.escape("title").toLowerCase();
-				if(title.indexOf(AlwaysNote.titleSearch) == -1) {
+				if(title.indexOf(titleSearch) == -1) {
 					AlwaysNote.searchingNotebooks.remove(notebook);
+					$('.notebook_show#nb' + notebook.id).hide();
+				} else {
+					$('.notebook_show#nb' + notebook.id).show();
 				}
 			});
-			this.notebooks = AlwaysNote.searchingNotebooks;
-			this.render();
 		} else if(event.which === 27) {
-			AlwaysNote.titleSearch = null;
-			this.notebooks = AlwaysNote.notebooks;
 			this.render();
 		}
 	},

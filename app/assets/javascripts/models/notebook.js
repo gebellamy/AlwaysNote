@@ -1,3 +1,3 @@
 AlwaysNote.Models.Notebook = Backbone.Model.extend({
-	urlRoot: "/notebooks/"
+	urlRoot: "/notebooks"
 })

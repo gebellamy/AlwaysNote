@@ -1,0 +1,24 @@
+<div class="sidebar_top">
+	<button class="all_notes">All Notes</button>
+	<% if(notebook.escape("title").length <= 10) { %>
+		<%= notebook.escape("title") %>
+	<% } else { %>
+		<%= notebook.escape("title").slice(0, 9)%>...
+	<% } %>
+</div>
+
+<div class="update_sort">Updated</div>
+<div class="title_sort">Title</div> 
+
+<div class="notes_list">
+<table>
+<% notes.forEach(function(note) { %>
+	<tr data-id="<%= note.id %>" id="note<%= note.id %>">
+		<% var updated = new Date(note.updated_at) %>
+		<td><%= updated.toDateString().slice(4) + " " + 
+			updated.toTimeString().slice(0,8) %></td>
+		<td><%= note.title %></td>
+	</tr>
+<% }) %>
+</table>
+</div>

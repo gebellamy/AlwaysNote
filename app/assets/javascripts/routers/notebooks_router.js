@@ -9,6 +9,8 @@ AlwaysNote.Routers.Notebooks = Backbone.Router.extend({
 	initialize: function() {
 		var sidebarView = new AlwaysNote.Views.Sidebar(AlwaysNote.notes);
 		$('.sidebar').html(sidebarView.render().$el)
+		var navbarView = new AlwaysNote.Views.Navbar();
+		$('.navbar').html(navbarView.render().$el);	
 	},
 	
 	notebooksIndexView: function() {
@@ -17,10 +19,16 @@ AlwaysNote.Routers.Notebooks = Backbone.Router.extend({
 		}
 		var view = new AlwaysNote.Views.NotebooksIndex(AlwaysNote.notebooks);
 		AlwaysNote.currentView = view;
-		var barView = new AlwaysNote.Views.NotebooksBar();
-		$('.notebooks_bar').html(barView.render().$el);
 		$('.notebooks').html(view.render().$el);
 	},
 	
+	notebookShowView: function(id) {
+		var notebook = AlwaysNote.notebooks.get(id);
+		var sidebarView = new AlwaysNote.Views.NotesSidebar(notebook);
+		$('.notes_sidebar').html(sidebarView.render().$el);
+		//var view = new AlwaysNote.Views.NotebookShow();
+		//AlwaysNote.currentView = view;
+		//$('.notes').html(view.render().$el);
+	}
 	
 })

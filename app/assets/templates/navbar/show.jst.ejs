@@ -1,0 +1,13 @@
+<div class="user_info">
+	<% if(user) { %>
+		<%= user.username %>
+		<button href="/session/logout">Log Out</button>
+	<% } else { %>
+		<button href="/session/new">Login</button>
+	<% } %>
+</div>
+<div class="new_note">
+	<button class="new_note_button">
+		&#65291; New Note in Selected Notebook
+	</button>
+</div>

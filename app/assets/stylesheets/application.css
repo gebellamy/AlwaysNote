@@ -144,3 +144,12 @@ body {
 	float: left;
 	height: 15px;
 }
+
+/* Notes Sidebar */
+
+.notes_sidebar {
+	width: 300px;
+	float: left;
+	background-color: #EEEEEE;
+	height: 100%;
+}
