@@ -24,6 +24,7 @@ body {
 	bottom: 0;
 	left: 0;
 	right: 0;
+	background-color: #DDDDDD;
 }
 
 /* Navbar */
@@ -60,7 +61,7 @@ body {
 
 .selector {
 	padding-top: 20px;
-	margin-left: 5px;
+	padding-left: 5px;
 	font-size: 30px;
 	color: #DDDDDD;
 }
@@ -78,6 +79,10 @@ body {
 	margin-bottom: 5px;
 	border-bottom: 1px solid #222222;
 	color: #EEEEEE;
+}
+
+.selected_sidebar {
+	background-color: #232323;
 }
 
 
@@ -152,4 +157,70 @@ body {
 	float: left;
 	background-color: #EEEEEE;
 	height: 100%;
+	border-top: 1px solid #676767;
+	border-right: 1px solid #676767;
+}
+
+.sidebar_top {
+	height: 50px;
+	border-bottom: 1px solid #CCCCCC;
+	font-size: 28px;
+	color: #787878;
+}
+
+.all_notes {
+	height: 25px;
+	margin-top: 12px;
+	margin-right: 15px;
+	margin-left: 10px;
+	color: #787878;
+	float: left;
+}
+
+.update_sort {
+	display: inline-block;
+	float: left;
+	width: 149px;
+	height: 20px;
+	border-right: 1px solid #CCCCCC;
+	border-bottom: 1px solid #CCCCCC;
+	color: #787878;
+	font-size: 12px;
+}
+
+.title_sort {
+	display: inline-block;
+	float: right;
+	width: 150px;
+	height: 20px;
+	border-bottom: 1px solid #CCCCCC;
+	color: #787878;
+	font-size: 12px;
+}
+
+.current_notebook_title {
+	padding-top: 10px;
+}
+
+.highlighted_note {
+	background-color: #2983CC !important;
+}
+
+.notes_list {
+	font-size: 12px;
+	border-collapse: collapse;
+}
+
+.notes_list tr {
+	padding: 0;
+}
+
+.notes_list tr:nth-child(odd) {
+	background-color: #DDDDDD;
+}
+
+.notes_list tr td {
+	height: 20px;
+	width: 150px;
+	padding: 0;
 }

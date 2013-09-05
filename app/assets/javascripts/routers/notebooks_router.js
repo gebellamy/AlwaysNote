@@ -14,18 +14,18 @@ AlwaysNote.Routers.Notebooks = Backbone.Router.extend({
 	},
 	
 	notebooksIndexView: function() {
-		if(AlwaysNote.currentView) {
-			AlwaysNote.currentView.destroy();
-		}
+		$('.notes_sidebar').hide();
+		$('.notes').hide();
 		var view = new AlwaysNote.Views.NotebooksIndex(AlwaysNote.notebooks);
 		AlwaysNote.currentView = view;
-		$('.notebooks').html(view.render().$el);
+		$('.notebooks').html(view.render().$el).show();
 	},
 	
 	notebookShowView: function(id) {
+		$('.notebooks').hide();;
 		var notebook = AlwaysNote.notebooks.get(id);
 		var sidebarView = new AlwaysNote.Views.NotesSidebar(notebook);
-		$('.notes_sidebar').html(sidebarView.render().$el);
+		$('.notes_sidebar').html(sidebarView.render().$el).show();;
 		//var view = new AlwaysNote.Views.NotebookShow();
 		//AlwaysNote.currentView = view;
 		//$('.notes').html(view.render().$el);

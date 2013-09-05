@@ -3,6 +3,7 @@ AlwaysNote.Views.NotebooksIndex = Backbone.View.extend({
 	
 	initialize: function(notebooks) {
 		this.notebooks = notebooks;
+		AlwaysNote.currentNotebook = this.notebooks.models[0];
 	},
 	
 	events: {
@@ -21,7 +22,6 @@ AlwaysNote.Views.NotebooksIndex = Backbone.View.extend({
 		if($(event.target).is($('.notebook_title'))) {
 			return;
 		}
-		console.log("Double-clicked a notebook");
 		var route = "notebooks/" + $(event.currentTarget).attr("data-id");
 		Backbone.history.navigate(route, {trigger: true});
 	},
