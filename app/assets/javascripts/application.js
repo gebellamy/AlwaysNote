@@ -15,6 +15,7 @@
 //= require underscore
 //= require backbone
 //= require jquery.serializeJSON.js
+//= require etch.js
 //= require always_note
 //= require_tree ../templates
 //= require_tree ./models

@@ -15,7 +15,7 @@
 <div class="notes_list">
 <table cellspacing="0">
 <% notes.forEach(function(note) { %>
-	<tr data-id="<%= note.id %>" id="note<%= note.id %>">
+	<tr data-id="<%= note.get("id") %>" id="note<%= note.id %>">
 		<% var updated = new Date(note.escape("updated_at")) %>
 		<td><%= updated.toDateString().slice(4) + " " + 
 			updated.toTimeString().slice(0,8) %></td>

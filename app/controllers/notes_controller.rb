@@ -19,7 +19,14 @@ class NotesController < ApplicationController
   end
   
   def update
-    
+    @note = Note.find_by_id(params[:id])
+    @note.title = params[:title]
+    @note.body = params[:body]
+    if @note.save
+      render :json => @note
+    else
+      render :json => @note.errors.full_messages, :status => 422
+    end
   end
   
   def show
