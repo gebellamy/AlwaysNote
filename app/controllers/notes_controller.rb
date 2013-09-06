@@ -22,8 +22,9 @@ class NotesController < ApplicationController
     @note = Note.find_by_id(params[:id])
     @note.title = params[:title]
     @note.body = params[:body]
+    @note.notebook_id = params[:notebook_id]
     if @note.save
-      render :json => @note
+      render :show, :handlers => [:rabl]
     else
       render :json => @note.errors.full_messages, :status => 422
     end
@@ -34,7 +35,8 @@ class NotesController < ApplicationController
   end
   
   def index
-    @notes = Note.where("owner_id = ?", current_user.id)
+    notebook_ids = Contribution.where("user_id = ?", current_user.id)
+    @notes = Note.where("notebook_id IN (?)", notebook_ids)
     render :index, :handlers => [:rabl]
   end
 end

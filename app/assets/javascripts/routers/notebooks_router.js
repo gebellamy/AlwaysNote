@@ -20,11 +20,17 @@ AlwaysNote.Routers.Notebooks = Backbone.Router.extend({
 	},
 	
 	notebookShowView: function(id) {
-		$('.notebooks').hide();;
+		$('.notebooks').hide();
 		var notebook = AlwaysNote.notebooks.get(id);
-		AlwaysNote.currentNotebook = notebook;
-		if(!AlwaysNote.currentNote) {
-			AlwaysNote.currentNote = AlwaysNote.notes.get(parseInt(notebook.get("notes")[0].id));
+		AlwaysNote.currentNotebook = notebook; 
+		if(notebook.get("notes").length > 0) {
+			if(!AlwaysNote.currentNote || 
+				AlwaysNote.currentNote.get("notebook_id") != id) {
+				AlwaysNote.currentNote = 
+					AlwaysNote.notes.get(notebook.get("notes")[0].id);
+			}
+		} else {
+			AlwaysNote.currentNote = null;
 		}
 		var sidebarView = new AlwaysNote.Views.NotesSidebar(notebook);
 		$('.notes_sidebar').html(sidebarView.render().$el).show();
@@ -32,8 +38,6 @@ AlwaysNote.Routers.Notebooks = Backbone.Router.extend({
 		AlwaysNote.currentView = view;
 		$('.note').html(view.render().$el);
 		$('.note').show();
-		AlwaysNote.highlightedNote = $('tr#note' + AlwaysNote.currentNote.id);
-		AlwaysNote.highlightedNote.addClass("highlighted_note");
 	}
 	
 })

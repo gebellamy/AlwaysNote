@@ -1,21 +1,23 @@
-<div class="title_bar">
-	<%= notebook.escape("title") %>
-	click to add tags
-</div>
-<div class="status_bar">
-	Created at: <%= note.escape("created_at") %> 
-	Updated at: <%= note.escape("updated_at") %>
-</div>
-<div class="markup_bar">
-	Markup stuff goes here.
-</div>
+<% if(note) { %>
+	<div class="title_bar">
+		<div class="choose_notebook"><%= notebook.escape("title") %></div>
+		click to add tags
+	</div>
+	<div class="status_bar">
+		Created at: <%= note.escape("created_at") %> 
+		Updated at: <%= note.escape("updated_at") %>
+	</div>
+	<div class="markup_bar">
+		Markup stuff goes here.
+	</div>
 
-<div class="note_area">
-	<form class="note_title">
-		<input type="text"  style="border:none" name="note[title]"
-			value="<%= note.escape("title")%>" class="title">
-	</form>
-	<div class="note_body editable" data-button-class="all"><%= 
-		note.get("body") 
-		%></div>
-</div>
+	<div class="note_area">
+		<form class="note_title">
+			<input type="text"  style="border:none" name="note[title]"
+				value="<%= note.escape("title")%>" class="title">
+		</form>
+		<div class="note_body editable" data-button-class="all"><%= 
+			note.get("body") 
+			%></div>
+	</div>
+<% } %>

@@ -4,7 +4,9 @@ AlwaysNote.Views.NotesSidebar = Backbone.View.extend({
 	initialize: function(notebook) {
 		if(notebook) {
 			this.notebook = notebook;
-			this.notes = new AlwaysNote.Collections.Notes(this.notebook.get("notes"));
+			if(this.notebook.get("notes").length > 0) {
+				this.notes = new AlwaysNote.Collections.Notes(this.notebook.get("notes"));
+			}
 			AlwaysNote.currentNotebook = this.notebook;
 		} else {
 			this.notes = AlwaysNote.notes;
@@ -16,7 +18,9 @@ AlwaysNote.Views.NotesSidebar = Backbone.View.extend({
 		"click .notes_list tr" : "selectNote",
 		"click .update_sort" : "sortByUpdated",
 		"click .title_sort" : "sortByTitle",
-		"click .all_notes" : "showAllNotes"
+		"click .all_notes" : "showAllNotes",
+		"click .current_notebook_title" : "notebooksMenu",
+		"change form.selectMenu" : "chooseNotebook"
 	},
 	
 	render: function() {
@@ -28,12 +32,34 @@ AlwaysNote.Views.NotesSidebar = Backbone.View.extend({
 		return this;
 	},
 	
-	showAllNotes: function(event) {
-		if(AlwaysNote.noteSidebarView) {
-			AlwaysNote.noteSidebarView.remove();
+	chooseNotebook: function(event) {
+		event.preventDefault();
+		var id = $(event.currentTarget).serializeJSON().id
+		
+		Backbone.history.navigate("notebooks/" + id, { trigger: true });
+	},
+	
+	notebooksMenu: function(event) {
+		if(this.menu) {
+			if(this.menuShown) {
+				this.menu.hide();
+				this.menuShown = false;
+			} else {
+				this.menu.show();
+				this.menuShown = true;
+			}
+		} else {
+			var menu = JST['notes/selectMenu']({ 
+				notebooks: AlwaysNote.notebooks 
+			});
+			this.$el.append(menu);
+			this.menu = $('.selectMenu');
+			this.menuShown = true;
 		}
+	},
+	
+	showAllNotes: function(event) {
 		var sidebarView = new AlwaysNote.Views.NotesSidebar();
-		AlwaysNote.noteSidebarView = sidebarView;
 		$('.notes_sidebar').html(sidebarView.render().$el).show();
 	},
 	

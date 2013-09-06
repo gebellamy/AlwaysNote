@@ -92,6 +92,7 @@ body {
 	background-color: #DDDDDD;
 	height: 100%;
 	margin-left: 200px;
+	overflow-y: scroll;
 }
 
 .notebooks_bar {
@@ -164,7 +165,7 @@ body {
 .sidebar_top {
 	height: 50px;
 	border-bottom: 1px solid #CCCCCC;
-	font-size: 28px;
+	font-size: 26px;
 	color: #787878;
 }
 
@@ -227,7 +228,18 @@ body {
 .notes_list tr td {
 	height: 20px;
 	width: 150px;
+	max-width: 150px;
 	padding: 0;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.selectMenu {
+	position: absolute;
+	left: 260px;
+	top: 75px;
+	z-index: 999;
 }
 
 /* Note show */
@@ -298,6 +310,16 @@ body {
 	font-size: 14px;
 }
 
+.choose_notebook {
+	display: inline-block;
+}
+
+.changeMenu {
+	position: absolute;
+	left: 500px;
+	top: 60px;
+	z-index: 999;
+}
 
 
 

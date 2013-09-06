@@ -2,9 +2,9 @@
 	<button class="all_notes">All Notes</button>
 	<div class="current_notebook_title">
 	<% if(notebook.escape("title").length <= 10) { %>
-		<%= notebook.escape("title") %>
+	<%= notebook.escape("title") %> &#9662;
 	<% } else { %>
-		<%= notebook.escape("title").slice(0, 9)%>...
+		<%= notebook.escape("title").slice(0, 9)%>... &#9662;
 	<% } %>
 	</div>
 </div>
@@ -14,13 +14,14 @@
 
 <div class="notes_list">
 <table cellspacing="0">
+	<% if(notes) { %>
 <% notes.forEach(function(note) { %>
 	<tr data-id="<%= note.get("id") %>" id="note<%= note.id %>">
 		<% var updated = new Date(note.escape("updated_at")) %>
-		<td><%= updated.toDateString().slice(4) + " " + 
+		<td id="updated"><%= updated.toDateString().slice(4) + " " + 
 			updated.toTimeString().slice(0,8) %></td>
-		<td><%= note.escape("title") %></td>
+		<td id="title"><%= note.escape("title") %></td>
 	</tr>
-<% }) %>
+<% })} %>
 </table>
 </div>
