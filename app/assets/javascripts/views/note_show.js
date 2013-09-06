@@ -11,13 +11,31 @@ AlwaysNote.Views.NoteShow = Backbone.View.extend({
 		"focusout .note_body" : "hideMarkup",
 		"submit" : "doNothing",
 		"click .editable" : "editableClick",
-		"click .note_body" : "editBody"
+		"click .note_body" : "editBody",
+		"click .note_title" : "editTitle",
+	},
+	
+	render: function() {
+		var content = this.template({ 
+			notebook: this.notebook,
+			note: this.note 
+		});
+		this.$el.html(content);
+		return this;
 	},
 	
 	editableClick: etch.editableInit,
 	
-	saveBody: function() {
-		AlwaysNote.currentNote.set({'body' : $('.note_body').html() });
+	editTitle: function() {	
+		var autosave = _.debounce(this.saveNote, 500);
+		$('.title').keypress(autosave);
+	},
+	
+	saveNote: function() {
+		AlwaysNote.currentNote.set({ 
+			'body' : $('.note_body').html(),
+			'title' : $('.title').serializeJSON()["note"]["title"]
+		});
 		AlwaysNote.currentNote.save(null, {
 			success: function() {
 				console.log("Success!");
@@ -29,7 +47,7 @@ AlwaysNote.Views.NoteShow = Backbone.View.extend({
 	},
 	
 	editBody: function() {
-		var autosave = _.debounce(this.saveBody, 500);
+		var autosave = _.debounce(this.saveNote, 500);
 		$('.note_body').keypress(autosave);
 	},
 	
@@ -45,14 +63,5 @@ AlwaysNote.Views.NoteShow = Backbone.View.extend({
 	showMarkup: function() {
 		$('.status_bar').hide();
 		$('.markup_bar').show();
-	},
-	
-	render: function() {
-		var content = this.template({ 
-			notebook: this.notebook,
-			note: this.note 
-		});
-		this.$el.html(content);
-		return this;
 	}
 })

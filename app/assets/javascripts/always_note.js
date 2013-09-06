@@ -12,7 +12,6 @@ window.AlwaysNote = {
 			AlwaysNote.notes.fetch({
 				success: function() {
 					AlwaysNote.router = new AlwaysNote.Routers.Notebooks();
-	
 					Backbone.history.start();
 				}
 			});

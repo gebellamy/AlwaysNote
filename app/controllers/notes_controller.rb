@@ -3,7 +3,7 @@ class NotesController < ApplicationController
   def create
     @note = Note.new(params[:note])
     if @note.save
-      render @note
+      render :show, :handlers => [:rabl]
     else
       render :json => @note.errors.full_messages, :status => 422
     end

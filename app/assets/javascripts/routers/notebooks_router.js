@@ -1,9 +1,7 @@
 AlwaysNote.Routers.Notebooks = Backbone.Router.extend({
 	routes: {
 		"" : "notebooksIndexView",
-		"notebooks/new" : "newNotebookView",
-		"notebooks/:id" : "notebookShowView",
-		"notes/:id" : "noteShowView"
+		"notebooks/:id" : "notebookShowView"
 	},
 	
 	initialize: function() {
@@ -24,11 +22,18 @@ AlwaysNote.Routers.Notebooks = Backbone.Router.extend({
 	notebookShowView: function(id) {
 		$('.notebooks').hide();;
 		var notebook = AlwaysNote.notebooks.get(id);
+		AlwaysNote.currentNotebook = notebook;
+		if(!AlwaysNote.currentNote) {
+			AlwaysNote.currentNote = AlwaysNote.notes.get(parseInt(notebook.get("notes")[0].id));
+		}
 		var sidebarView = new AlwaysNote.Views.NotesSidebar(notebook);
-		$('.notes_sidebar').html(sidebarView.render().$el).show();;
-		//var view = new AlwaysNote.Views.NoteShow();
-		//AlwaysNote.currentView = view;
-		//$('.notes').html(view.render().$el);
+		$('.notes_sidebar').html(sidebarView.render().$el).show();
+		var view = new AlwaysNote.Views.NoteShow();
+		AlwaysNote.currentView = view;
+		$('.note').html(view.render().$el);
+		$('.note').show();
+		AlwaysNote.highlightedNote = $('tr#note' + AlwaysNote.currentNote.id);
+		AlwaysNote.highlightedNote.addClass("highlighted_note");
 	}
 	
 })
