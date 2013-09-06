@@ -17,6 +17,7 @@ AlwaysNote.Views.Navbar = Backbone.View.extend({
 		newNote.save(null, {
 			success: function() {
 				AlwaysNote.currentNote = newNote;
+				AlwaysNote.currentNotebook.get("notes").push(newNote);
 				AlwaysNote.notes.add(newNote);
 				$('.notebooks').hide();
 				var notebook = AlwaysNote.currentNotebook;

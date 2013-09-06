@@ -1,3 +1,3 @@
 object @note
 
-attributes :id, :owner_id, :title
+attributes :id, :owner_id, :title, :body, :updated_at

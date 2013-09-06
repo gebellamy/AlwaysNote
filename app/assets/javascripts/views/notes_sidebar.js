@@ -29,8 +29,11 @@ AlwaysNote.Views.NotesSidebar = Backbone.View.extend({
 	},
 	
 	showAllNotes: function(event) {
-		console.log("All Notes");
+		if(AlwaysNote.noteSidebarView) {
+			AlwaysNote.noteSidebarView.remove();
+		}
 		var sidebarView = new AlwaysNote.Views.NotesSidebar();
+		AlwaysNote.noteSidebarView = sidebarView;
 		$('.notes_sidebar').html(sidebarView.render().$el).show();
 	},
 	
