@@ -29,6 +29,10 @@ AlwaysNote.Views.NotesSidebar = Backbone.View.extend({
 			notes: this.notes 
 		});
 		this.$el.html(content);
+		if(AlwaysNote.currentNote) {
+			AlwaysNote.highlightedNote = $('tr#note'+AlwaysNote.currentNote.id);
+			AlwaysNote.highlightedNote.addClass("highlighted_note");
+		}
 		return this;
 	},
 	
@@ -97,5 +101,6 @@ AlwaysNote.Views.NotesSidebar = Backbone.View.extend({
 		var show = new AlwaysNote.Views.NoteShow();
 		$('.note').html(show.render().$el);
 		$('.note').show()
+		$('.markup_bar').hide();
 	}
 })

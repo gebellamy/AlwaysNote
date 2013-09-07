@@ -34,10 +34,15 @@ AlwaysNote.Routers.Notebooks = Backbone.Router.extend({
 		}
 		var sidebarView = new AlwaysNote.Views.NotesSidebar(notebook);
 		$('.notes_sidebar').html(sidebarView.render().$el).show();
+		if(AlwaysNote.currentNote) {
+			AlwaysNote.highlightedNote = $('tr#note'+AlwaysNote.currentNote.id);
+			AlwaysNote.highlightedNote.addClass("highlighted_note");
+		}
 		var view = new AlwaysNote.Views.NoteShow();
 		AlwaysNote.currentView = view;
 		$('.note').html(view.render().$el);
 		$('.note').show();
+		$('.markup_bar').hide();
 	}
 	
 })

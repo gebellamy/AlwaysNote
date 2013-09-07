@@ -2,14 +2,27 @@ AlwaysNote.Views.Sidebar = Backbone.View.extend({
 	template: JST['sidebar/show'],
 	
 	initialize: function() {
-		this.recentNotes = [AlwaysNote.notes.first()];
-		//Change this to be an array of the five most-recently updated notes
-		//Add listeners
+		AlwaysNote.notes.comparator = function(note) {
+			var time = new Date(note.escape('updated_at'));
+			time = Date.parse(time) * -1
+			return time;
+		}
+		AlwaysNote.notes.sort();
+		this.recentNotes = AlwaysNote.notes.slice(0, 5);
 	},
 	
 	events: {
 		"click #notes" : "showNotes",
-		"click #notebooks" : "showNotebooks"
+		"click #notebooks" : "showNotebooks",
+		"click .recent_note" : "navigateToNote"
+	},
+	
+	navigateToNote: function(event) {
+		var id = parseInt($(event.currentTarget).attr("data-id"));
+		AlwaysNote.currentNote = AlwaysNote.notes.get(id);
+		var notebookId = AlwaysNote.currentNote.get("notebook_id")
+		Backbone.history.navigate("notebooks/" + notebookId,
+			{ trigger: true });
 	},
 	
 	showNotes: function() {

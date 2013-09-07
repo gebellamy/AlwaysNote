@@ -17,7 +17,7 @@
     // in the markup as "data-button-class"   
     buttonClasses: {
       'default': ['save'],
-      'all': ['bold', 'italic', 'underline', 'unordered-list', 'ordered-list', 'link', 'clear-formatting', 'save'],
+      'all': ['bold', 'italic', 'underline', 'unordered-list', 'ordered-list', 'clear-formatting'],
       'title': ['bold', 'italic', 'underline', 'save']
     }
   };
@@ -29,9 +29,10 @@
       this.$el = $(this.el);
             
       // Model attribute event listeners:
-      _.bindAll(this, 'changeButtons', 'changePosition', 'changeEditable', 'insertImage');
+      _.bindAll(this, 'changeButtons', 'changeEditable', 'insertImage');
+	  //'changePosition',
       this.model.bind('change:buttons', this.changeButtons);
-      this.model.bind('change:position', this.changePosition);
+      // this.model.bind('change:position', this.changePosition);
       this.model.bind('change:editable', this.changeEditable);
 
       // Init Routines:
@@ -68,26 +69,27 @@
 
     changeButtons: function() {
       // render the buttons into the editor-panel
-      this.$el.empty();
-      var view = this;
-      var buttons = this.model.get('buttons');
-            
-      // hide editor panel if there are no buttons in it and exit early
-      if (!buttons.length) { $(this.el).hide(); return; }
-            
-      _.each(this.model.get('buttons'), function(button){
-        var $buttonEl = $('<a href="#" class="etch-editor-button etch-'+ button +'" title="'+ button.replace('-', ' ') +'"><span></span></a>');
-        view.$el.append($buttonEl);
-      });
-            
-      $(this.el).show('fast');
+  	      this.$el.empty();
+	        var view = this;
+	        var buttons = this.model.get('buttons');
+              
+	        // hide editor panel if there are no buttons in it and exit early
+	        if (!buttons.length) { $(this.el).hide(); return; }
+              
+	        _.each(this.model.get('buttons'), function(button){
+	          var $buttonEl = $('<a href="#" class="etch-editor-button etch-'+ button +'" title="'+ button.replace('-', ' ') +'"><span></span></a>');
+	          view.$el.append($buttonEl);
+	        });
+              
+	        // $(this.el).show();
+	  	  $('.markup_bar').html($(this.el).show());
     },
 
-    changePosition: function() {
-      // animate editor-panel to new position
-      var pos = this.model.get('position');
-      this.$el.animate({'top': pos.y, 'left': pos.x}, { queue: false });
-    },
+    // changePosition: function() {
+//       // animate editor-panel to new position
+//       var pos = this.model.get('position');
+//       this.$el.animate({'top': pos.y, 'left': pos.x}, { queue: false });
+//     },
         
     wrapSelection: function(selectionOrRange, elString, cb) {
       // wrap current selection with elString tag
@@ -300,26 +302,26 @@
 
       // listen for mousedowns that are not coming from the editor
       // and close the editor
-      $('body').bind('mousedown.editor', function(e) {
-        // check to see if the click was in an etch tool
-        var target = e.target || e.srcElement;
-        if ($(target).not('.etch-editor-panel, .etch-editor-panel *, .etch-image-tools, .etch-image-tools *').size()) {
-          // remove editor
-          $editor.remove();
-                    
-                    
-          if (models.EditableImage) {
-            // unblind the image-tools if the editor isn't active
-            $editable.find('img').unbind('mouseenter');
-
-            // remove any latent image tool model references
-            $(etch.config.selector+' img').data('editableImageModel', false)
-          }
-                    
-          // once the editor is removed, remove the body binding for it
-          $(this).unbind('mousedown.editor');
-        }
-      });
+      // $('body').bind('mousedown.editor', function(e) {
+//         // check to see if the click was in an etch tool
+//         var target = e.target || e.srcElement;
+//         if ($(target).not('.etch-editor-panel, .etch-editor-panel *, .etch-image-tools, .etch-image-tools *').size()) {
+//           // remove editor
+//           $editor.remove();
+//                     
+//                     
+//           if (models.EditableImage) {
+//             // unblind the image-tools if the editor isn't active
+//             $editable.find('img').unbind('mouseenter');
+// 
+//             // remove any latent image tool model references
+//             $(etch.config.selector+' img').data('editableImageModel', false)
+//           }
+//                     
+//           // once the editor is removed, remove the body binding for it
+//           $(this).unbind('mousedown.editor');
+//         }
+//       });
 
       editorModel.set({position: {x: e.pageX - 15, y: e.pageY - 80}});
     }

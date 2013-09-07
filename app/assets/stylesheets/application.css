@@ -13,7 +13,7 @@
  */
 
 body {
-	font-family: Arial, sans-serif;
+	font-family: "Helvetica Neue", sans-serif;
 }
 
 .container {
@@ -25,6 +25,10 @@ body {
 	left: 0;
 	right: 0;
 	background-color: #DDDDDD;
+}
+
+.hidden {
+	display: none;
 }
 
 /* Navbar */
@@ -67,8 +71,13 @@ body {
 }
 
 .recent_note {
-	margin-left: 8px;
-	color: #EEEEEE;
+	margin-left: 4px;
+	color: #CDCDCD;
+	font-size: 13px;
+	line-height: 1.6em;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
 }
 
 .recent {
@@ -293,17 +302,25 @@ body {
 	box-shadow: 7px 7px 5px #BCBCBC;
 }
 
+.note_title {
+	border-bottom: 1px solid #DEDEDE;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
 .note_title .title {
 	width: 95%;
 	margin: 20px;
+	margin-left: 10px;
+	margin-bottom: 10px;
 	outline: none;
-	font-size: 14px;
+	font-size: 20px;
 }
 
 .note_body {
 	width: 95%;
 	margin: 20px;
-	margin-top: 0;
+	margin-top: 10px;
 	height: 320px;
 	outline: none;
 	resize: none;
@@ -338,12 +355,12 @@ body {
 
 /* === Editor === */
 
-.etch-editor-panel { display: none; padding: 5px; position: absolute; z-index: 10000;
-    background: #dadada; border: 1px solid #bdbdbd; color: #535353; text-shadow: 0 1px 0 #fff;
-    background-image: -moz-linear-gradient(center bottom, #ccc 0%, #ddd 100%);
+.etch-editor-panel { display: none; padding: 0px; /*position: absolute; z-index: 10000; top: 71px; left: 504px;*/
+    background: #dadada;/* border: 1px solid #bdbdbd;*/ color: #535353; text-shadow: 0 1px 0 #fff;
+    /*background-image: -moz-linear-gradient(center bottom, #ccc 0%, #ddd 100%);
     background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ddd), to(#ccc));
-    -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
-    -webkit-box-shadow: inset 1px 0 0 #dfdfdf, inset 0 1px 0 #dfdfdf, inset -1px 0 0 #dfdfdf, inset 0 -1px 0 #dfdfdf, 0 0 5px rgba(0,0,0,.3);
+    -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;*/
+    /*-webkit-box-shadow: inset 1px 0 0 #dfdfdf, inset 0 1px 0 #dfdfdf, inset -1px 0 0 #dfdfdf, inset 0 -1px 0 #dfdfdf, 0 0 5px rgba(0,0,0,.3);*/
  }
 .etch-editor-button { display: block; float: left; margin-right: 3px; position: relative; text-decoration: none;
     display: block; width: 27px; height: 27px; background: #dadada; border: 1px solid #aaa; color: #535353; text-shadow: 0 1px 0 #fff;
