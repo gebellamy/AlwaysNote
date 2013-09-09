@@ -10,13 +10,15 @@ AlwaysNote.Views.NoteShow = Backbone.View.extend({
 	
 	events: {
 		"focusin .note_body" : "showMarkup",
-		"focusout .note_body" : "hideMarkup",
+		//"focusout .note_body" : "hideMarkup",
 		"submit" : "doNothing",
 		"click .editable" : "editableClick",
 		"click .note_body" : "editBody",
 		"click .note_title" : "editTitle",
 		"click .choose_notebook" : "chooseNotebook",
-		"change form.changeMenu" : "changeNotebook"
+		"change form.changeMenu" : "changeNotebook",
+		"click .add_tags_area" : "newTag",
+		"submit form.new_tag" : "addTag"
 	},
 	
 	render: function() {
@@ -26,6 +28,26 @@ AlwaysNote.Views.NoteShow = Backbone.View.extend({
 		});
 		this.$el.html(content);
 		return this;
+	},
+	
+	addTag: function(event) {
+		event.preventDefault();
+		formData = $(event.currentTarget).serializeJSON();
+		console.log(formData);
+		Tag.save({formData, 
+			success: function(resp) {
+				this.note.tags.add(resp);
+			},
+			error: function(model, resp) {
+				console.log(model);
+			}
+		});
+	},
+	
+	newTag: function(event) {
+		console.log("Add a tag");
+		$('.add_tags_area').hide();
+		$('.new_tag_area').html(JST['tags/new']({ note: this.note }));
 	},
 	
 	changeNotebook: function(event) {

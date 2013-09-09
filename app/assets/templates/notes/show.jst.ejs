@@ -1,7 +1,15 @@
 <% if(note) { %>
 	<div class="title_bar">
 		<div class="choose_notebook"><%= notebook.escape("title") %></div>
-		click to add tags
+		<div class="add_tags_area">click to add tags</div>
+		<div class="new_tag_area"></div>
+		<div class="tags_area">
+			<% if(note.get("tags").length > 0) {%>
+				<% note.get("tags").forEach( function(tag) { %>
+					<div class="note_tag"><%= tag.escape("title") %></div>
+				<% })%>
+			<% } %>
+		</div>
 	</div>
 	<div class="status_bar">
 		Created at: <%= note.escape("created_at") %> 

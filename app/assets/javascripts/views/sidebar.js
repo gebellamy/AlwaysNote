@@ -20,9 +20,16 @@ AlwaysNote.Views.Sidebar = Backbone.View.extend({
 	navigateToNote: function(event) {
 		var id = parseInt($(event.currentTarget).attr("data-id"));
 		AlwaysNote.currentNote = AlwaysNote.notes.get(id);
-		var notebookId = AlwaysNote.currentNote.get("notebook_id")
+		var notebookId = AlwaysNote.currentNote.get("notebook_id");
+		if(AlwaysNote.currentNotebook.id == notebookId) {
+			var show = new AlwaysNote.Views.NoteShow();
+			$('.note').html(show.render().$el);
+			$('.note').show()
+			$('.markup_bar').hide();
+		} else {
 		Backbone.history.navigate("notebooks/" + notebookId,
 			{ trigger: true });
+		}
 	},
 	
 	showNotes: function() {

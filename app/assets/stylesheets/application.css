@@ -320,7 +320,8 @@ body {
 .note_body {
 	width: 95%;
 	margin: 20px;
-	margin-top: 10px;
+	margin-top: 0px;
+	padding-top: 10px;
 	height: 320px;
 	outline: none;
 	resize: none;
@@ -329,6 +330,13 @@ body {
 
 .choose_notebook {
 	display: inline-block;
+	float: left;
+	margin-right: 10px;
+}
+
+.add_tag_area {
+	display: inline-block;
+	float: left;
 }
 
 .changeMenu {
