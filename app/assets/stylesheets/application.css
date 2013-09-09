@@ -357,6 +357,81 @@ body {
 	z-index: 999;
 }
 
+/* Tags index */
+
+.tags {
+	display: block;
+	height: 100%;
+	margin-left: 200px;
+	background-color: #DDDDDD;
+}
+
+.tags_bar {
+	height: 30px;
+	margin: 5px;
+	padding: 5px;
+	border-bottom: 1px solid #AAAAAA;
+}
+
+.new_tags_button {
+	float: left;
+	color: #676767;
+	margin-right: 10px;
+}
+
+.tag_search {
+	display: inline-block;
+	float: left;
+}
+
+.tag_text {
+	display: inline-block;
+	background-color: #E1F0FA;
+	border-radius: 15px;
+	border: 1px solid #ABC7D9;
+	height: 10px;
+	margin: 5px;
+	margin-bottom: 0px;
+	font-size: 12px;
+	padding: 6px;
+	padding-top: 3px;
+	color: #909090;
+	max-width: 160px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.highlighted_tag {
+	background-color: #2C89DB !important;
+	color: #CDCDCD;
+}
+
+.show_tags_button {
+	display: inline-block;
+	float: right;
+	background-color: #008CE3;
+	color: #EFEFEF;
+	font-size: 14px;
+	border: 1px solid #005A91;
+}
+
+.show_tags_button:active {
+	background-color: #0066A6;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

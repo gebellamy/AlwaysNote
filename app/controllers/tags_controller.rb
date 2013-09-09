@@ -15,6 +15,15 @@ class TagsController < ApplicationController
     end
   end
   
+  def index
+    # Get all tags that belong to a notebook that the user can see
+    notebook_ids = Contribution.where("user_id = ?", current_user.id)
+    note_ids = Note.where("notebook_id IN (?)", notebook_ids)
+    tag_ids = NoteTagging.where("note_id IN (?)", note_ids)
+    @tags = Tag.where("id IN (?)", tag_ids)
+    render :index, :handlers => :rabl
+  end
+  
   def destroy
     
   end

@@ -13,7 +13,16 @@ AlwaysNote.Routers.Notebooks = Backbone.Router.extend({
 	},
 	
 	tagsIndexView: function() {
-		
+		$('.notes_sidebar').hide();
+		$('.notebooks').hide();
+		$('.note').hide();
+		var tags = new AlwaysNote.Collections.Tags();
+		tags.fetch({
+			success: function() {
+				var view = new AlwaysNote.Views.TagsIndex(tags);
+				$('.tags').html(view.render().$el);
+			}
+		});
 	},
 	
 	notebooksIndexView: function() {
