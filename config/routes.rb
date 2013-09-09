@@ -8,4 +8,5 @@ AlwaysNote::Application.routes.draw do
   root to: 'root#root'
   resources :notebooks, :only => [:create, :destroy, :show, :index, :update]
   resources :notes, :only => [:create, :destroy, :show, :index, :update]
+  resources :tags, :only => [:create, :destroy]
 end

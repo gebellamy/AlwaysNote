@@ -6,7 +6,7 @@
 		<div class="tags_area">
 			<% if(note.get("tags").length > 0) {%>
 				<% note.get("tags").forEach( function(tag) { %>
-					<div class="note_tag"><%= tag.escape("title") %></div>
+					<div class="note_tag"><%= tag.title %></div>
 				<% })%>
 			<% } %>
 		</div>

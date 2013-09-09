@@ -31,12 +31,15 @@ AlwaysNote.Views.NoteShow = Backbone.View.extend({
 	},
 	
 	addTag: function(event) {
+		var that = this;
 		event.preventDefault();
 		formData = $(event.currentTarget).serializeJSON();
-		console.log(formData);
-		Tag.save({formData, 
+		var tag = new AlwaysNote.Models.Tag();
+		tag.save(formData, {
 			success: function(resp) {
-				this.note.tags.add(resp);
+				that.note.get("tags").push(formData);
+				that.render();
+				$('.markup_bar').hide();
 			},
 			error: function(model, resp) {
 				console.log(model);
@@ -45,7 +48,6 @@ AlwaysNote.Views.NoteShow = Backbone.View.extend({
 	},
 	
 	newTag: function(event) {
-		console.log("Add a tag");
 		$('.add_tags_area').hide();
 		$('.new_tag_area').html(JST['tags/new']({ note: this.note }));
 	},

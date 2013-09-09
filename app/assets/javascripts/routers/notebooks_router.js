@@ -1,7 +1,8 @@
 AlwaysNote.Routers.Notebooks = Backbone.Router.extend({
 	routes: {
 		"" : "notebooksIndexView",
-		"notebooks/:id" : "notebookShowView"
+		"notebooks/:id" : "notebookShowView",
+		"tags" : "tagsIndexView"
 	},
 	
 	initialize: function() {
@@ -9,6 +10,10 @@ AlwaysNote.Routers.Notebooks = Backbone.Router.extend({
 		$('.sidebar').html(sidebarView.render().$el)
 		var navbarView = new AlwaysNote.Views.Navbar();
 		$('.navbar').html(navbarView.render().$el);	
+	},
+	
+	tagsIndexView: function() {
+		
 	},
 	
 	notebooksIndexView: function() {

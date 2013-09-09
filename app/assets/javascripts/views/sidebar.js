@@ -14,6 +14,7 @@ AlwaysNote.Views.Sidebar = Backbone.View.extend({
 	events: {
 		"click #notes" : "showNotes",
 		"click #notebooks" : "showNotebooks",
+		"click #tags" : "showTags",
 		"click .recent_note" : "navigateToNote"
 	},
 	
@@ -30,6 +31,13 @@ AlwaysNote.Views.Sidebar = Backbone.View.extend({
 		Backbone.history.navigate("notebooks/" + notebookId,
 			{ trigger: true });
 		}
+	},
+	
+	showTags: function() {
+		$('#notes').removeClass("selected_sidebar");
+		$('#tags').addClass("selected_sidebar");
+		$('#notebooks').removeClass("selected_sidebar");
+		Backbone.history.navigate("tags", { trigger: true });
 	},
 	
 	showNotes: function() {
