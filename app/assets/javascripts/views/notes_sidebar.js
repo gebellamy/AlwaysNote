@@ -20,7 +20,8 @@ AlwaysNote.Views.NotesSidebar = Backbone.View.extend({
 		"click .title_sort" : "sortByTitle",
 		"click .all_notes" : "showAllNotes",
 		"click .current_notebook_title" : "notebooksMenu",
-		"change form.selectMenu" : "chooseNotebook"
+		"change form.selectMenu" : "chooseNotebook",
+		"click .share" : "shareNotebook"
 	},
 	
 	render: function() {
@@ -34,6 +35,15 @@ AlwaysNote.Views.NotesSidebar = Backbone.View.extend({
 			AlwaysNote.highlightedNote.addClass("highlighted_note");
 		}
 		return this;
+	},
+	
+	sendNotebook: function(event) {
+		
+	},
+	
+	shareNotebook: function() {
+		console.log("Sharing is caring!");
+		this.$el.append(JST['notebooks/share']({ notebook: this.notebook }));
 	},
 	
 	chooseNotebook: function(event) {

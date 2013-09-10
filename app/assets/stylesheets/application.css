@@ -277,9 +277,58 @@ body {
 	display: inline-block;
 	float: left;
 	background: url('share.png') no-repeat;
-	background-size: 40px 40px;
-	height: 40px;
-	width: 40px;
+	background-size: 20px 20px;
+	height: 20px;
+	width: 20px;
+	margin: 15px;
+}
+
+/* Share dialog */
+
+.share_dialog {
+	position: absolute;
+	left: 300px;
+	top: 36px;
+	background-color: #EDEDED;
+	width: 500px;
+	height: 70%;
+	border: 1px solid #B4B4B4;
+	border-top: none;
+	padding: 10px;
+	padding-bottom: 0;
+}
+
+.shared_notebook_title {
+	text-align: center;
+	font-size: 20px;
+	color: #7F7F80;
+}
+
+.sharing {
+	background-color: #E4E4E4;
+	margin: 15px;
+	padding: 5px;
+	color: #666670;
+	font-size: 13px;
+}
+
+.bold_text {
+	color: #424242;
+	font-size: 15px;
+}
+
+.share_bottom_bar {
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 30px;
+	border-top: 1px solid #B4B4B4;
+	background-color: #DBDBDB;
+}
+
+.share_values {
+	width: 370px;
 }
 
 /* Note show */
