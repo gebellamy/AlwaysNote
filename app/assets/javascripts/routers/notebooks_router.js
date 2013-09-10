@@ -21,6 +21,7 @@ AlwaysNote.Routers.Notebooks = Backbone.Router.extend({
 			success: function() {
 				var view = new AlwaysNote.Views.TagsIndex(tags);
 				$('.tags').html(view.render().$el);
+				$('.tags').show();
 			}
 		});
 	},
