@@ -173,6 +173,7 @@ body {
 	float: left;
 	height: 20px;
 }
+
 .search {
 	margin-left: 15px;
 	float: left;
@@ -275,6 +276,10 @@ body {
 .share {
 	display: inline-block;
 	float: left;
+	background: url('share.png') no-repeat;
+	background-size: 40px 40px;
+	height: 40px;
+	width: 40px;
 }
 
 /* Note show */

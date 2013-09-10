@@ -8,7 +8,6 @@
 	<% } %>
 	</div>
 	<div class="share">
-		<img src="share.png" height="30" width="30">
 	</div>
 </div>
 
@@ -16,15 +15,15 @@
 <div class="title_sort">Title</div> 
 
 <div class="notes_list">
-<table cellspacing="0">
-	<% if(notes) { %>
-<% notes.forEach(function(note) { %>
-	<tr data-id="<%= note.get("id") %>" id="note<%= note.id %>">
-		<% var updated = new Date(note.escape("updated_at")) %>
-		<td id="updated"><%= updated.toDateString().slice(4) + " " + 
-			updated.toTimeString().slice(0,8) %></td>
-		<td id="title"><%= note.escape("title") %></td>
-	</tr>
-<% })} %>
-</table>
+	<table cellspacing="0">
+		<% if(notes) { %>
+			<% notes.forEach(function(note) { %>
+				<tr data-id="<%= note.get("id") %>" id="note<%= note.id %>">
+					<% var updated = new Date(note.escape("updated_at")) %>
+					<td id="updated"><%= updated.toDateString().slice(4) + " " + 
+						updated.toTimeString().slice(0,8) %></td>
+					<td id="title"><%= note.escape("title") %></td>
+				</tr>
+		<% })} %>
+	</table>
 </div>

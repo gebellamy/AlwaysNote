@@ -3,7 +3,7 @@ class Notifier < ActionMailer::Base
   
   def signup_email(user)
     @user = user
-    @url = "http://localhost:3000/users/authenticate?auth_token=" + @user.auth_token
+    @url = "http://alwaysnote.herokuapp.com/users/authenticate?auth_token=" + @user.auth_token
     mail( :to => @user.email,
           :subject => 'Thanks for signing up!' )
   end
@@ -13,7 +13,7 @@ class Notifier < ActionMailer::Base
     @random_password = SecureRandom.urlsafe_base64(10)
     @user.password = @random_password
     @user.save
-    @url = "http://localhost:3000/users/" + @user.id.to_s + "/edit"
+    @url = "http://alwaysnote.herokuapp.com/users/" + @user.id.to_s + "/edit"
     mail( :to => @user.email,
           :subject => 'AlwaysNote Password Reset' )
   end
