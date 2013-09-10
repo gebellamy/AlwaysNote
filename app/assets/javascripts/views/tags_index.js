@@ -23,16 +23,13 @@ AlwaysNote.Views.TagsIndex = Backbone.View.extend({
 		$('.notes_sidebar').html(sidebarView.render().$el).show();
 		$('.tags').hide();
 		if(notebook.get("notes").length > 0) {
-			if(!AlwaysNote.currentNote || 
-				AlwaysNote.currentNote.get("notebook_id") != id) {
+			if(!AlwaysNote.currentNote) {
 				AlwaysNote.currentNote = 
 					AlwaysNote.notes.get(notebook.get("notes")[0].id);
 			}
 		} else {
 			AlwaysNote.currentNote = null;
 		}
-		var sidebarView = new AlwaysNote.Views.NotesSidebar(notebook);
-		$('.notes_sidebar').html(sidebarView.render().$el).show();
 		if(AlwaysNote.currentNote) {
 			AlwaysNote.highlightedNote = $('tr#note'+AlwaysNote.currentNote.id);
 			AlwaysNote.highlightedNote.addClass("highlighted_note");
@@ -42,6 +39,9 @@ AlwaysNote.Views.TagsIndex = Backbone.View.extend({
 		$('.note').html(view.render().$el);
 		$('.note').show();
 		$('.markup_bar').hide();
+		$('#notes').addClass("selected_sidebar");
+		$('#tags').removeClass("selected_sidebar");
+		$('#notebooks').removeClass("selected_sidebar");
 	},
 	
 	highlightTag: function(event) {

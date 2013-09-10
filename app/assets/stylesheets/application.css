@@ -24,7 +24,7 @@ body {
 	bottom: 0;
 	left: 0;
 	right: 0;
-	background-color: #DDDDDD;
+	background-color: #DBDBDB;
 }
 
 .hidden {
@@ -34,14 +34,24 @@ body {
 /* Navbar */
 
 .navbar {
-	background-color: #ABABAB;
+	/*background-color: #B4B4B4;*/
 	padding-left: 10px;
 	padding-top: 5px;
 	height: 30px;
+	background: #e7e7e7; /* Old browsers */
+	background: -moz-linear-gradient(top, #e7e7e7 0%, #b4b4b4 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e7e7e7), color-stop(100%,#b4b4b4)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #e7e7e7 0%,#b4b4b4 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #e7e7e7 0%,#b4b4b4 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #e7e7e7 0%,#b4b4b4 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #e7e7e7 0%,#b4b4b4 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e7e7e7', endColorstr='#b4b4b4',GradientType=0 ); /* IE6-9 */
 }
 
 .user_info {
 	float:left;
+	margin-top: 3px;
+	color: #2B2F35;
 }
 
 .new_note {
@@ -54,10 +64,19 @@ body {
 	font-size: 12px;
 }
 
+.logo {
+	display: inline-block;
+	float: left;
+	margin-right: 65px;
+	font-size: 24px;
+	margin-top: -3px;
+	color: #2983CC;
+}
+
 /* Sidebar */
 
 .sidebar {
-	background-color: #343434;
+	background-color: #2B2F35;
 	width: 200px;
 	float:left;
 	height: 100%;
@@ -67,7 +86,7 @@ body {
 	padding-top: 20px;
 	padding-left: 5px;
 	font-size: 30px;
-	color: #DDDDDD;
+	color: #DBDBDB;
 }
 
 .recent_note {
@@ -86,19 +105,19 @@ body {
 	margin-right: 5px;
 	padding-bottom: 10px;
 	margin-bottom: 5px;
-	border-bottom: 1px solid #222222;
-	color: #EEEEEE;
+	border-bottom: 1px solid #212429;
+	color: #EDEDED;
 }
 
 .selected_sidebar {
-	background-color: #232323;
+	background-color: #24282D;
 }
 
 
 /* Notebooks Index */
 
 .notebooks {
-	background-color: #DDDDDD;
+	background-color: #DBDBDB;
 	height: 100%;
 	margin-left: 200px;
 	overflow-y: scroll;
@@ -133,7 +152,7 @@ body {
 	height: 65px;
 	font-size: 18px;
 	background-color: #1F6299;
-	color: #EEEEEE;
+	color: #EDEDED;
 	border: 1px solid #144063;
 }
 
@@ -165,15 +184,15 @@ body {
 .notes_sidebar {
 	width: 300px;
 	float: left;
-	background-color: #EEEEEE;
+	background-color: #EDEDED;
 	height: 100%;
-	border-top: 1px solid #676767;
-	border-right: 1px solid #676767;
+	border-top: 1px solid #B4B4B4;
+	border-right: 1px solid #B4B4B4;
 }
 
 .sidebar_top {
 	height: 50px;
-	border-bottom: 1px solid #CCCCCC;
+	border-bottom: 1px solid #B4B4B4;
 	font-size: 26px;
 	color: #787878;
 }
@@ -192,8 +211,8 @@ body {
 	float: left;
 	width: 149px;
 	height: 20px;
-	border-right: 1px solid #CCCCCC;
-	border-bottom: 1px solid #CCCCCC;
+	border-right: 1px solid #B4B4B4;
+	border-bottom: 1px solid #B4B4B4;
 	color: #787878;
 	font-size: 12px;
 }
@@ -203,7 +222,7 @@ body {
 	float: right;
 	width: 150px;
 	height: 20px;
-	border-bottom: 1px solid #CCCCCC;
+	border-bottom: 1px solid #B4B4B4;
 	color: #787878;
 	font-size: 12px;
 }
@@ -215,6 +234,8 @@ body {
 
 .current_notebook_title {
 	padding-top: 10px;
+	display: inline-block;
+	float: left;
 }
 
 .highlighted_note {
@@ -231,7 +252,7 @@ body {
 }
 
 .notes_list tr:nth-child(odd) {
-	background-color: #DDDDDD;
+	background-color: #DBDBDB;
 }
 
 .notes_list tr td {
@@ -251,11 +272,17 @@ body {
 	z-index: 999;
 }
 
+.share {
+	display: inline-block;
+	float: left;
+}
+
 /* Note show */
 
 .note {
-	background-color: #DDDDDD;
+	background-color: #DBDBDB;
 	height: 100%;
+	border-top: 1px solid #B4B4B4;
 }
 
 .title_bar {
@@ -276,6 +303,7 @@ body {
 	border: 1px solid #A9C5DB;
 	padding: 2px;
 	margin: 1px;
+	margin-top: -2px;
 	border-radius: 10px;
 }
 
@@ -357,13 +385,18 @@ body {
 	z-index: 999;
 }
 
+.new_tag {
+	float: left;
+	display: inline-block;
+}
+
 /* Tags index */
 
 .tags {
 	display: block;
 	height: 100%;
 	margin-left: 200px;
-	background-color: #DDDDDD;
+	background-color: #DBDBDB;
 }
 
 .tags_bar {
@@ -429,22 +462,54 @@ body {
 
 /* STATIC PAGES */
 
-#bg {
-  position: fixed; 
-  top: -50%; 
-  left: -50%; 
-  width: 200%; 
-  height: 200%;
+.static_page {
+	background: url('background.jpg') no-repeat center center fixed; 
+	  -webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	  background-size: cover;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
 }
-#bg img {
-  position: absolute; 
-  top: 0; 
-  left: 0; 
-  right: 0; 
-  bottom: 0; 
-  margin: auto; 
-  min-width: 50%;
-  min-height: 50%;
+
+.sign_in {
+	position: relative; 
+	left: 40%;
+	right: 40%;
+	top: 30%;
+	background: #FFFFFF;
+	height: 175px;
+	width: 250px;
+	border-radius: 10px;
+	vertical-align: middle;
+	padding: 10px;
+}
+
+.sign_up {
+	position: relative; 
+	left: 40%;
+	right: 40%;
+	top: 30%;
+	background: #FFFFFF;
+	height: 200px;
+	width: 250px;
+	border-radius: 10px;
+	vertical-align: middle;
+	padding: 10px;
+}
+
+.static_page h1{
+	text-align: center;
+}
+
+.submit {
+	display: inline-block;
+	float: left;
 }
 
 

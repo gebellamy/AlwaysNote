@@ -22,6 +22,9 @@ AlwaysNote.Routers.Notebooks = Backbone.Router.extend({
 				var view = new AlwaysNote.Views.TagsIndex(tags);
 				$('.tags').html(view.render().$el);
 				$('.tags').show();
+				$('#notes').removeClass("selected_sidebar");
+				$('#tags').addClass("selected_sidebar");
+				$('#notebooks').removeClass("selected_sidebar");
 			}
 		});
 	},
@@ -29,13 +32,18 @@ AlwaysNote.Routers.Notebooks = Backbone.Router.extend({
 	notebooksIndexView: function() {
 		$('.notes_sidebar').hide();
 		$('.note').hide();
+		$('.tags').hide();
 		var view = new AlwaysNote.Views.NotebooksIndex(AlwaysNote.notebooks);
 		AlwaysNote.currentView = view;
 		$('.notebooks').html(view.render().$el).show();
+		$('#notes').removeClass("selected_sidebar");
+		$('#tags').removeClass("selected_sidebar");
+		$('#notebooks').addClass("selected_sidebar");
 	},
 	
 	notebookShowView: function(id) {
 		$('.notebooks').hide();
+		$('.tags').hide();
 		var notebook = AlwaysNote.notebooks.get(id);
 		AlwaysNote.currentNotebook = notebook; 
 		if(notebook.get("notes").length > 0) {
@@ -58,6 +66,9 @@ AlwaysNote.Routers.Notebooks = Backbone.Router.extend({
 		$('.note').html(view.render().$el);
 		$('.note').show();
 		$('.markup_bar').hide();
+		$('#notes').addClass("selected_sidebar");
+		$('#tags').removeClass("selected_sidebar");
+		$('#notebooks').removeClass("selected_sidebar");
 	}
 	
 })
