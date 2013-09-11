@@ -69,6 +69,7 @@ AlwaysNote.Routers.Notebooks = Backbone.Router.extend({
 		$('#notes').addClass("selected_sidebar");
 		$('#tags').removeClass("selected_sidebar");
 		$('#notebooks').removeClass("selected_sidebar");
+		$('.new_note_button').html("&#65291; New Note in " + notebook.escape("title"));
 	}
 	
 })

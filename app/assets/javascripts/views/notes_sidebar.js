@@ -21,7 +21,9 @@ AlwaysNote.Views.NotesSidebar = Backbone.View.extend({
 		"click .all_notes" : "showAllNotes",
 		"click .current_notebook_title" : "notebooksMenu",
 		"change form.selectMenu" : "chooseNotebook",
-		"click .share" : "shareNotebook"
+		"click .share" : "shareNotebook",
+		"submit .share_form" : "sendNotebook",
+		"click .dismiss" : "dismiss"
 	},
 	
 	render: function() {
@@ -37,8 +39,28 @@ AlwaysNote.Views.NotesSidebar = Backbone.View.extend({
 		return this;
 	},
 	
+	dismiss: function() {
+		$('.share_dialog').remove();
+	},
+	
 	sendNotebook: function(event) {
-		
+		var that = this;
+		event.preventDefault();
+		var formData = $(event.currentTarget).serializeJSON();
+		formData["notebook_id"] = this.notebook.id;
+		console.log(formData);
+		$.ajax({
+			url: "/contributions",
+			type: "POST",
+			data: formData,
+			success: function() {
+				console.log("Success!");
+				that.dismiss();
+			},
+			error: function(resp) {
+				console.log(resp);
+			}
+		});
 	},
 	
 	shareNotebook: function() {

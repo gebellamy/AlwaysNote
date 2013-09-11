@@ -3,6 +3,7 @@ class NotebooksController < ApplicationController
   def index
     if logged_in?
       notebook_ids = Contribution.where("user_id = ?", current_user.id)
+      notebook_ids.map! { |contribution| contribution.notebook_id }
       @notebooks = Notebook.where("id IN (?)", notebook_ids)
       render :index, :handlers => [:rabl]
     else

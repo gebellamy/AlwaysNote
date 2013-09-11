@@ -12,8 +12,16 @@
 		</div>
 	</div>
 	<div class="status_bar">
-		Created at: <%= note.escape("created_at") %> 
-		Updated at: <%= note.escape("updated_at") %>
+		<%
+			var updated = new Date(note.escape("updated_at"));
+		   	var created = new Date(note.escape("created_at")); 
+	    %>
+		<div class="note_created">
+			Created: <%= created.toDateString().slice(4) %>	
+		</div>
+		<div class="note_updated">
+			Updated: <%= updated.toDateString().slice(4) %>
+		</div>
 	</div>
 	<div class="markup_bar">
 	</div>

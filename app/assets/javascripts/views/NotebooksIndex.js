@@ -73,6 +73,7 @@ AlwaysNote.Views.NotebooksIndex = Backbone.View.extend({
 		}
 		var notebookId = parseInt($($(event.currentTarget)).attr("data-id"));
 		AlwaysNote.currentNotebook = AlwaysNote.notebooks.get(notebookId);
+		$('.new_note_button').html("&#65291; New Note in " + AlwaysNote.currentNotebook.escape("title"));
 		AlwaysNote.highlightedNotebook = $(event.currentTarget);
 		$(AlwaysNote.highlightedNotebook).addClass("highlighted_notebook");
 	},
