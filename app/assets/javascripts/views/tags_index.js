@@ -4,11 +4,28 @@ AlwaysNote.Views.TagsIndex = Backbone.View.extend({
 	events: {
 		"click .tag_text" : "highlightTag",
 		"keyup form.tag_search" : "search",
-		"click .show_notes_button" : "showNotes"
+		"click .show_notes_button" : "showNotes",
+		"click .delete" : "deleteTag"
 	},
 	
 	initialize: function(tags) {
 		this.tags = tags;
+	},
+	
+	deleteTag: function() {
+		var that = this;
+		var tagId = parseInt(this.highlightedTag.attr("data-id"));
+		var tag = this.tags.get(tagId);
+		this.tags.remove(tag);
+		tag.destroy({
+			success: function() {
+				console.log("Success!");
+				that.render();
+			},
+			error: function(resp) {
+				console.log(resp);
+			}
+		});
 	},
 	
 	showNotes: function() {
@@ -52,6 +69,7 @@ AlwaysNote.Views.TagsIndex = Backbone.View.extend({
 		this.highlightedTag = $(event.currentTarget);
 		this.highlightedTag.addClass("highlighted_tag");
 		var id = parseInt($(event.currentTarget).attr("data-id"));
+		$('.delete_area').html(JST['notebooks/delete']());
 		$('.tags_bar').append(JST['tags/show_button']({
 			tag: this.tags.get(id)
 		}));

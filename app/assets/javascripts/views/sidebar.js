@@ -32,10 +32,9 @@ AlwaysNote.Views.Sidebar = Backbone.View.extend({
 			AlwaysNote.highlightedNote = $('tr#note'+AlwaysNote.currentNote.id);
 			AlwaysNote.highlightedNote.addClass("highlighted_note");
 			$('.markup_bar').hide();
-		} else {
+		}
 		Backbone.history.navigate("notebooks/" + notebookId,
 			{ trigger: true });
-		}
 	},
 	
 	showTags: function() {

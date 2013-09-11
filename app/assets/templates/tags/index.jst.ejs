@@ -6,12 +6,13 @@
 	<form class="tag_search">
 		<input type="search" name="title" placeholder="Find a tag">
 	</form>
+	<div class="delete_area"></div>
 </div>
 
 <div class="tags_index">
 	<% tags.forEach(function(tag) { %>
-		<div class="tag_show" id="tag<%= tag.id %>">
-			<div class="tag_text" data-id="<%= tag.id %>">
+		<div class="tag_show" id="tag<%= tag.get("id") %>">
+			<div class="tag_text" data-id="<%= tag.get("id") %>">
 				<%= tag.escape("title") %>&#8198;&#8198;&#8198;&#8198;&#8198;
 				<%= tag.get("notes").length %>
 			</div>

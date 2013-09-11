@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username, :base_email, :case_sensitive => false
   
   has_many :owned_notebooks, :class_name => "Notebook", :foreign_key => :owner_id
-  has_many :contributions
+  has_many :contributions, :dependent => :destroy
   has_many :notebooks, :through => :contributions, :source => :notebook
   has_many :notes, :class_name => "Note", :foreign_key => :owner_id
   
