@@ -23,7 +23,12 @@ class NotebooksController < ApplicationController
   end
   
   def destroy
-    
+    @notebook = Notebook.find_by_id(params[:id])
+    if @notebook.destroy
+      render :json => true
+    else
+      render :json => @notebook.errors.full_messages, :status => 422
+    end
   end
   
   def update

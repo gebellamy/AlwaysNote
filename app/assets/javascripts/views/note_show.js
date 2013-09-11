@@ -19,7 +19,8 @@ AlwaysNote.Views.NoteShow = Backbone.View.extend({
 		"change form.changeMenu" : "changeNotebook",
 		"click .add_tags_area" : "newTag",
 		"submit form.new_tag" : "addTag",
-		"keyup form.new_tag" : "closeForm"
+		"keyup form.new_tag" : "closeForm",
+		"click .delete" : "deleteNote"
 	},
 	
 	render: function() {
@@ -29,6 +30,36 @@ AlwaysNote.Views.NoteShow = Backbone.View.extend({
 		});
 		this.$el.html(content);
 		return this;
+	},
+	
+	deleteNote: function() {
+		var that = this;
+		var currentNoteId = AlwaysNote.currentNote.id;
+		AlwaysNote.currentNote.destroy({
+			success: function() {
+				var notes = that.notebook.get("notes");
+				for(var i = 0, len = notes.length; i < len; i++) {
+					if(notes[i].id == currentNoteId){
+						notes.splice(i, 1);
+						break;
+					}
+				}
+				if(that.notebook.get("notes").length > 0) {
+					var id = that.notebook.get("notes")[0].id;
+					AlwaysNote.currentNote = AlwaysNote.notes.get(id);
+					that.note = AlwaysNote.currentNote;
+				} else {
+					that.note = null;
+				}
+				that.render();
+				$('.markup_bar').hide();
+				var sidebar = new AlwaysNote.Views.NotesSidebar(that.notebook);
+				$('.notes_sidebar').html(sidebar.render().$el).show();
+			},
+			error: function(resp) {
+				console.log(resp);
+			}
+		});
 	},
 	
 	closeForm: function(event) {
@@ -84,10 +115,22 @@ AlwaysNote.Views.NoteShow = Backbone.View.extend({
 	},
 	
 	chooseNotebook: function() {
-		var menu = JST['notes/changeMenu']({
-			notebooks: AlwaysNote.notebooks
-		});
-		this.$el.append(menu);
+		if(this.menu) {
+			if(this.menuShown) {
+				this.menu.hide();
+				this.menuShown = false;
+			} else {
+				this.menu.show();
+				this.menuShown = true;
+			}
+		} else {
+			var menu = JST['notes/changeMenu']({
+				notebooks: AlwaysNote.notebooks
+			});
+			this.$el.append(menu);
+			this.menu = $('.changeMenu');
+			this.menuShown = true;
+		}
 	},
 	
 	editableClick: etch.editableInit,

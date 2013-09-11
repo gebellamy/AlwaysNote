@@ -12,7 +12,7 @@ class NotesController < ApplicationController
   def destroy
     @note = Note.find_by_id(params[:id])
     if @note.destroy
-      render :json => @note
+      render :json => true
     else
       render :json => @note.errors.full_messages, :status => 422
     end

@@ -16,7 +16,22 @@ AlwaysNote.Views.NotebooksIndex = Backbone.View.extend({
 		"submit form.create_new_notebook" : "createNotebook",
 		"keyup form.search" : "search",
 		"submit form.search" : "doNothing",
-		"dblclick .notebook_show" : "viewNotebook"
+		"dblclick .notebook_show" : "viewNotebook",
+		"click .delete" : "deleteNotebook"
+	},
+	
+	deleteNotebook: function() {
+		var that = this;
+		var id = AlwaysNote.currentNotebook.id;
+		var notebook = this.notebooks.get(id);
+		notebook.destroy({
+			success: function() {
+				that.render();
+			},
+			error: function(resp) {
+				console.log(resp);
+			}
+		});
 	},
 	
 	viewNotebook: function(event) {
@@ -77,6 +92,7 @@ AlwaysNote.Views.NotebooksIndex = Backbone.View.extend({
 		$('.new_note_button').html("&#65291; New Note in " + AlwaysNote.currentNotebook.escape("title"));
 		AlwaysNote.highlightedNotebook = $(event.currentTarget);
 		$(AlwaysNote.highlightedNotebook).addClass("highlighted_notebook");
+		$('.delete_area').html(JST['notebooks/delete']());
 	},
 	
 	editTitle: function(event) {
@@ -121,7 +137,7 @@ AlwaysNote.Views.NotebooksIndex = Backbone.View.extend({
 				}
 			});
 		} else {
-			console.log("Double form submission is bad");
+			event.preventDefault();
 		}
 	} 
 });

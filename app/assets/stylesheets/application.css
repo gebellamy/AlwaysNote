@@ -148,7 +148,7 @@ body {
 	height: 150px;
 	background-color: #2983CC;
 	box-shadow: 10px 10px 5px #888888;
-	border-right: 3px groove #FFFFFF;
+	border-right: 4px groove #FFFFFF;
 }
 
 .notebook_title {
@@ -188,6 +188,21 @@ body {
 	margin-left: 15px;
 	float: left;
 	height: 15px;
+}
+
+.delete_area {
+	margin-top: -7px;
+	padding-right: 10px;
+	display: inline-block;
+	float: right;
+}
+
+.delete {
+	font-size: 30px;
+	color: #AD4242;
+	display: inline-block;
+	float: right;
+	margin-right: 10px;
 }
 
 /* Notes Sidebar */
@@ -373,6 +388,10 @@ body {
 	font-size: 12px;
 	color: #787878;
 	cursor: default;
+}
+
+.title_bar .delete {
+	margin-top: -10px;
 }
 
 .note_tag {
