@@ -120,8 +120,8 @@ AlwaysNote.Views.NotebooksIndex = Backbone.View.extend({
 					that.inprocess = false;
 				}
 			});
+		} else {
+			console.log("Double form submission is bad");
 		}
-	} else {
-		console.log("Double form submission is bad");
-	}
+	} 
 });
