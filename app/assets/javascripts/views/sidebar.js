@@ -26,6 +26,11 @@ AlwaysNote.Views.Sidebar = Backbone.View.extend({
 			var show = new AlwaysNote.Views.NoteShow();
 			$('.note').html(show.render().$el);
 			$('.note').show()
+			if(AlwaysNote.highlightedNote) {
+				AlwaysNote.highlightedNote.removeClass("highlighted_note");
+			}
+			AlwaysNote.highlightedNote = $('tr#note'+AlwaysNote.currentNote.id);
+			AlwaysNote.highlightedNote.addClass("highlighted_note");
 			$('.markup_bar').hide();
 		} else {
 		Backbone.history.navigate("notebooks/" + notebookId,

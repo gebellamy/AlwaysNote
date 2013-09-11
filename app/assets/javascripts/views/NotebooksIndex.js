@@ -4,6 +4,7 @@ AlwaysNote.Views.NotebooksIndex = Backbone.View.extend({
 	initialize: function(notebooks) {
 		this.notebooks = notebooks;
 		AlwaysNote.currentNotebook = this.notebooks.models[0];
+		this.inprocess = false;
 	},
 	
 	events: {
@@ -101,19 +102,26 @@ AlwaysNote.Views.NotebooksIndex = Backbone.View.extend({
 	},
 	
 	createNotebook: function(event) {
-		var that = this;
-		event.preventDefault();
-		var formData = $(event.currentTarget).serializeJSON();
-		var newNotebook = new AlwaysNote.Models.Notebook(formData);
-		newNotebook.save(null, {
-			success: function(resp) {
-				AlwaysNote.notebooks.add(newNotebook);
-				that.notebooks = AlwaysNote.notebooks;
-				that.render();
-			},
-			failure: function(resp, error) {
-				console.log(error);
-			}
-		});
+		if(!this.inprocess) {
+			this.inprocess = true;
+			var that = this;
+			event.preventDefault();
+			var formData = $(event.currentTarget).serializeJSON();
+			var newNotebook = new AlwaysNote.Models.Notebook(formData);
+			newNotebook.save(null, {
+				success: function(resp) {
+					AlwaysNote.notebooks.add(newNotebook);
+					that.notebooks = AlwaysNote.notebooks;
+					that.render();
+					that.inprocess = false;
+				},
+				failure: function(resp, error) {
+					console.log(error);
+					that.inprocess = false;
+				}
+			});
+		}
+	} else {
+		console.log("Double form submission is bad");
 	}
 });

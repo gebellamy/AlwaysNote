@@ -18,7 +18,8 @@ AlwaysNote.Views.NoteShow = Backbone.View.extend({
 		"click .choose_notebook" : "chooseNotebook",
 		"change form.changeMenu" : "changeNotebook",
 		"click .add_tags_area" : "newTag",
-		"submit form.new_tag" : "addTag"
+		"submit form.new_tag" : "addTag",
+		"keyup form.new_tag" : "closeForm"
 	},
 	
 	render: function() {
@@ -28,6 +29,13 @@ AlwaysNote.Views.NoteShow = Backbone.View.extend({
 		});
 		this.$el.html(content);
 		return this;
+	},
+	
+	closeForm: function(event) {
+		if(event.which == 27) {
+			this.render();
+			$('.markup_bar').hide();
+		}
 	},
 	
 	addTag: function(event) {

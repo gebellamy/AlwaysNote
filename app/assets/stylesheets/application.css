@@ -148,6 +148,7 @@ body {
 	height: 150px;
 	background-color: #2983CC;
 	box-shadow: 10px 10px 5px #888888;
+	border-right: 3px groove #FFFFFF;
 }
 
 .notebook_title {
