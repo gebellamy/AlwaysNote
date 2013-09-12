@@ -17,7 +17,7 @@
     // in the markup as "data-button-class"   
     buttonClasses: {
       'default': ['save'],
-      'all': ['bold', 'italic', 'underline', 'unordered-list', 'ordered-list', 'clear-formatting'],
+      'all': ['bold', 'italic', 'underline', 'unordered-list', 'ordered-list', 'heading', 'clear-formatting'],
       'title': ['bold', 'italic', 'underline', 'save']
     }
   };
@@ -101,6 +101,7 @@
     clearFormatting: function(e) {
       e.preventDefault();
       document.execCommand('removeFormat', false, null);
+	  //document.execCommand('backColor', false, "#007FFF");
     },
         
     toggleBold: function(e) {
@@ -120,14 +121,10 @@
         
     toggleHeading: function(e) {
       e.preventDefault();
-      var range = window.getSelection().getRangeAt(0);
-      var wrapper = range.commonAncestorContainer.parentElement
-      if ($(wrapper).is('h3')) {
-        $(wrapper).replaceWith(wrapper.textContent)
-        return;
-      }
-      var h3 = document.createElement('h3');
-      range.surroundContents(h3);
+      var position = window.getSelection().getRangeAt(0);
+      //var h3 = document.createElement('h3');
+	  var checkbox = document.createTextNode("<input type='checkbox'>");
+      position.insertNode(checkbox);
     },
 
     urlPrompt: function(callback) {

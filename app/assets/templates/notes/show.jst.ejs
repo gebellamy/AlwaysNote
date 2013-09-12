@@ -35,7 +35,7 @@
 				value="<%= note.escape("title")%>" class="title">
 		</form>
 		<div class="note_body editable" data-button-class="all"><%= 
-			note.get("body") 
+			note.get("body").replace(/&lt;input type='checkbox'&gt;/g, "<form class='todo'><input type='checkbox'></form>")
 			%></div>
 	</div>
 <% } %>

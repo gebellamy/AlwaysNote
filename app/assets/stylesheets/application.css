@@ -479,6 +479,11 @@ body {
 	font-size: 14px;
 }
 
+.todo {
+	display: inline-block;
+	float: left;
+}
+
 .choose_notebook {
 	display: inline-block;
 	float: left;
