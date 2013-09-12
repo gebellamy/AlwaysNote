@@ -5,11 +5,16 @@ AlwaysNote.Views.TagsIndex = Backbone.View.extend({
 		"click .tag_text" : "highlightTag",
 		"keyup form.tag_search" : "search",
 		"click .show_notes_button" : "showNotes",
-		"click .delete" : "deleteTag"
+		"click .delete" : "deleteTag",
+		"submit form.tag_search" : "doNothing"
 	},
 	
 	initialize: function(tags) {
 		this.tags = tags;
+	},
+	
+	doNothing: function(event) {
+		event.preventDefault();
 	},
 	
 	deleteTag: function() {

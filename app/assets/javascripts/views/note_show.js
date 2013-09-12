@@ -20,7 +20,8 @@ AlwaysNote.Views.NoteShow = Backbone.View.extend({
 		"click .add_tags_area" : "newTag",
 		"submit form.new_tag" : "addTag",
 		"keyup form.new_tag" : "closeForm",
-		"click .delete" : "deleteNote"
+		"click .delete" : "deleteNote",
+		"click [type='checkbox']" : "checkBox"
 	},
 	
 	render: function() {
@@ -30,6 +31,14 @@ AlwaysNote.Views.NoteShow = Backbone.View.extend({
 		});
 		this.$el.html(content);
 		return this;
+	},
+	
+	checkBox: function(event) {
+		console.log("Box checked/unchecked!");
+		console.log(event.target);
+		if(event.currentTarget == "<input type='checkbox'>") {
+			console.log("Equal");
+		}
 	},
 	
 	deleteNote: function() {
@@ -179,7 +188,7 @@ AlwaysNote.Views.NoteShow = Backbone.View.extend({
 		if(!this.savingBody) {
 			this.savingBody = true;
 			var autosave = _.debounce(this.saveNote, 500);
-			$('.note_body').keypress(autosave);
+			$('.note_body').change(autosave);
 		}
 	},
 	

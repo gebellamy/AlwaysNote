@@ -596,6 +596,21 @@ body {
 	bottom: 0;
 }
 
+.static_page_logo {
+	color: #1E84C8;
+	font-size: 130px;
+	position: absolute;
+	left: 20px;
+	top: 50px;
+	cursor: default;
+}
+
+.signed_up {
+	font-size: 14px;
+	position: absolute;
+	bottom: 5px;
+}
+
 .sign_in {
 	position: relative; 
 	left: 40%;
@@ -626,12 +641,29 @@ body {
 	text-align: center;
 }
 
-.submit {
-	display: inline-block;
+.login label{
+	display: block;
+	width: 100px;
 	float: left;
 }
 
+.login input[type=text] {
+	display: block;
+	width: 130px;
+	float: left;
+}
 
+.login input[type=password] {
+	display: block;
+	width: 130px;
+	float: left;
+}
+
+#submit {
+	display: inline-block;
+	float: right;
+	margin-right: 15px;
+}
 
 
 

@@ -1,8 +1,12 @@
 <div class="static_page">
+	<div class="static_page_logo">
+		AlwaysNote
+	</div>
+	
 	<div class="sign_up">
 		<h1>Sign Up!</h1>
 
-		<form action="<%= users_url %>" method="POST">
+		<form class="login" action="<%= users_url %>" method="POST">
 			<label for="user_email">Email</label>
 			<input type="text" name="user[email]"
 				id="user_email" value="<%= @user.email %>">
@@ -16,7 +20,11 @@
 			<input type="hidden" name="authenticity_token" 
 				value="<%= form_authenticity_token %>">
 			<br>
-			<input type="submit" value="Sign Up">
+			<input type="submit" id="submit" value="Sign Up">
 		</form>
+		
+		<div class="signed_up">
+			Already have an account? <a href="/session/new">Sign in!</a>
+		</div>
 	</div>
 </div>

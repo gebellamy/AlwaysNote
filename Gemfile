@@ -18,8 +18,6 @@ gem 'bcrypt-ruby'
 gem 'rabl'
 gem 'tinymce-rails'
 gem 'jquery-rails'
-gem 'paperclip'
-gem 'aws-sdk'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

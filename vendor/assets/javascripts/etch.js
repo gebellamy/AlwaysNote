@@ -17,7 +17,7 @@
     // in the markup as "data-button-class"   
     buttonClasses: {
       'default': ['save'],
-      'all': ['bold', 'italic', 'underline', 'unordered-list', 'ordered-list', 'heading', 'clear-formatting'],
+      'all': ['bold', 'italic', 'underline', 'unordered-list', 'ordered-list', 'clear-formatting'],
       'title': ['bold', 'italic', 'underline', 'save']
     }
   };
@@ -123,8 +123,11 @@
       e.preventDefault();
       var position = window.getSelection().getRangeAt(0);
       //var h3 = document.createElement('h3');
-	  var checkbox = document.createTextNode("<input type='checkbox'>");
-      position.insertNode(checkbox);
+	  
+	  //var checkbox = document.createTextNode("<input type='checkbox'>");
+      //position.insertNode(checkbox);
+	  var html = "<input type='checkbox'>"
+	  document.execCommand('inserthtml', false, html);
     },
 
     urlPrompt: function(callback) {

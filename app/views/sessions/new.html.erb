@@ -1,8 +1,12 @@
 <div class="static_page">
+	<div class="static_page_logo">
+		AlwaysNote
+	</div>
+	
 	<div class="sign_in">
 		<h1>Sign In!</h1>
 
-		<form action="<%= session_url %>" method="POST">
+		<form class="login" action="<%= session_url %>" method="POST">
 			<label for="user_username">Username</label>
 			<input type="text" name="user[username]" id="user_username">
 			<br>
@@ -11,9 +15,13 @@
 			<br>
 			<input type="hidden" name="authenticity_token" 
 				value="<%= form_authenticity_token %>">
-			<input type="submit" value="Sign In">
+			<input type="submit" id="submit" value="Sign In">
+			<div style="width: auto; display: inline-block">
+				<input type="button" value="Forgot Password?" onclick="location.href='/users/forgot_password';">
+			</div>
 		</form>
-		<%= button_to "Forgot Password?", users_forgot_password_url, 
-			:method => :get %>
+		<div class="signed_up">
+			Don't have an account? <a href="/users/new">Sign Up!</a>
+		</div>
 	</div>
 </div>
