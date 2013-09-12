@@ -31,13 +31,13 @@ class NotesController < ApplicationController
   end
   
   def show
-    @note = Note.find_by_id(params[:id])
+    @note = Note.includes(:tags).find_by_id(params[:id])
     render :show, :handlers => [:rabl]
   end
   
   def index
     notebook_ids = Contribution.where("user_id = ?", current_user.id)
-    @notes = Note.where("notebook_id IN (?)", notebook_ids)
+    @notes = Note.where("notebook_id IN (?)", notebook_ids).includes(:tags)
     render :index, :handlers => [:rabl]
   end
 end

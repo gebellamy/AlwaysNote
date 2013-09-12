@@ -4,7 +4,7 @@ class NotebooksController < ApplicationController
     if logged_in?
       notebook_ids = Contribution.where("user_id = ?", current_user.id)
       notebook_ids.map! { |contribution| contribution.notebook_id }
-      @notebooks = Notebook.where("id IN (?)", notebook_ids)
+      @notebooks = Notebook.where("id IN (?)", notebook_ids).includes(:notes)
       render :index, :handlers => [:rabl]
     else
       redirect_to new_session_url

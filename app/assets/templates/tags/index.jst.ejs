@@ -14,7 +14,7 @@
 		<div class="tag_show" id="tag<%= tag.get("id") %>">
 			<div class="tag_text" data-id="<%= tag.get("id") %>">
 				<%= tag.escape("title") %>&#8198;&#8198;&#8198;&#8198;&#8198;
-				<%= tag.get("notes").length %>
+				<%= tag.get("note_taggings").length %>
 			</div>
 		</div>
 	<% })%>

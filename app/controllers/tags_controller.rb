@@ -20,7 +20,7 @@ class TagsController < ApplicationController
     notebook_ids = Contribution.where("user_id = ?", current_user.id)
     note_ids = Note.where("notebook_id IN (?)", notebook_ids)
     tag_ids = NoteTagging.where("note_id IN (?)", note_ids).map { |tagging| tagging.tag_id }
-    @tags = Tag.where("id IN (?)", tag_ids)
+    @tags = Tag.where("id IN (?)", tag_ids).includes(:note_taggings)
     render :index, :handlers => :rabl
   end
   
