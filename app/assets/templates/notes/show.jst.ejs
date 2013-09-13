@@ -36,8 +36,8 @@
 			<input type="text"  style="border:none" name="note[title]"
 				value="<%= note.escape("title")%>" class="title">
 		</form>
-		<div class="note_body editable" data-button-class="all"><%= 
-			note.get("body").replace(/&lt;input type='checkbox'&gt;/g, "<form class='todo'><input type='checkbox'></form>")
-			%></div>
+		<div class="note_body editable" data-button-class="all">
+      <%= note.get("body")%>
+    </div>
 	</div>
 <% } %>
