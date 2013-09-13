@@ -87,7 +87,17 @@ AlwaysNote.Views.NoteShow = Backbone.View.extend({
 		var tag = new AlwaysNote.Models.Tag();
 		tag.save(formData, {
 			success: function(resp) {
-				that.note.get("tags").push(formData);
+        var found = false;
+        var noteTags = that.note.get("tags");
+        for(var i = 0, len = noteTags.length; i < len; i++) {
+          if(noteTags[i].title == formData.title) {
+            found = true;
+            break;
+          }
+        }
+        if(!found) {
+          that.note.get("tags").push(formData); 
+        }
 				that.render();
 				$('.markup_bar').hide();
 			},

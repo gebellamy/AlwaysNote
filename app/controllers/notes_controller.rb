@@ -31,7 +31,7 @@ class NotesController < ApplicationController
   end
   
   def show
-    @note = Note.includes(:tags).find_by_id(params[:id])
+    @note = Note.find_by_id(params[:id]).includes(:tags)
     render :show, :handlers => [:rabl]
   end
   
