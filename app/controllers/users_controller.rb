@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     if @user.save
       login_user!(@user)
       Notifier.signup_email(@user).deliver
-      redirect_to @user
+      redirect_to root_url
     else
       render :new
     end
