@@ -10,7 +10,7 @@ AlwaysNote.Views.TagsIndex = Backbone.View.extend({
 	},
 	
 	initialize: function(tags) {
-		this.tags = tags;
+		this.tags = tags.sort();
 	},
 	
 	doNothing: function(event) {
@@ -45,10 +45,8 @@ AlwaysNote.Views.TagsIndex = Backbone.View.extend({
 		$('.notes_sidebar').html(sidebarView.render().$el).show();
 		$('.tags').hide();
 		if(notebook.get("notes").length > 0) {
-			if(!AlwaysNote.currentNote) {
 				AlwaysNote.currentNote = 
 					AlwaysNote.notes.get(notebook.get("notes")[0].id);
-			}
 		} else {
 			AlwaysNote.currentNote = null;
 		}
