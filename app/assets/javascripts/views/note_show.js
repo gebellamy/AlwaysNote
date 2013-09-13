@@ -198,7 +198,7 @@ AlwaysNote.Views.NoteShow = Backbone.View.extend({
 		if(!this.savingBody) {
 			this.savingBody = true;
 			var autosave = _.debounce(this.saveNote, 500);
-			$('.note_body').change(autosave);
+			$('.note_body').keypress(autosave);
 		}
 	},
 	
