@@ -467,7 +467,11 @@ body {
 	outline: none;
 	resize: none;
 	font-size: 14px;
-  overflow-y: scroll;
+  overflow-y: hidden;
+}
+
+.note_body:hover {
+  overflow-y: auto;
 }
 
 .todo {
@@ -493,13 +497,13 @@ body {
   white-space: nowrap;
   height: 23px;
   width: 450px;
-  overflow-x: scroll;
+  overflow-x: hidden;
   overflow-y: hidden;
   margin-top: -2px;
 }
 
-.tags_area::-webkit-scrollbar {
-  display: none;
+.tags_area:hover {
+  overflow-x: auto;
 }
 
 .note_tag {
