@@ -25,6 +25,7 @@ AlwaysNote.Views.NoteShow = Backbone.View.extend({
 	},
 	
 	render: function() {
+    this.savingBody = false;
 		var content = this.template({ 
 			notebook: this.notebook,
 			note: this.note 
@@ -165,14 +166,15 @@ AlwaysNote.Views.NoteShow = Backbone.View.extend({
 	},
 	
 	saveNote: function() {
+    var that = this;
 		var note = AlwaysNote.notes.get(parseInt(AlwaysNote.currentNote.id));
 		note.save({ 
 			'body' : $('.note_body').html(),
 			'title' : $('.title').serializeJSON()["note"]["title"]},
 			{
 			success: function(model, resp) {
-				var id = note.id;
 				var notes = AlwaysNote.currentNotebook.get("notes");
+        var id = resp.id;
 				for(var i = 0, len = notes.length; i < len; i++) {
 					if(notes[i].id == id){
 						notes.splice(i, 1);
@@ -180,8 +182,8 @@ AlwaysNote.Views.NoteShow = Backbone.View.extend({
 					}
 				}
 				AlwaysNote.currentNotebook.get("notes").push(resp);
-				var noteCollection = new AlwaysNote.Collections.Notes(
-					AlwaysNote.currentNotebook.get("notes"));
+        that.notebook = AlwaysNote.currentNotebook;
+        AlwaysNote.currentNote = note;
 				$('tr#note' + id + ' td#title').html(note.escape('title'));
 				var updated = new Date(note.escape("updated_at"));
 				var time = updated.toDateString().slice(4) + " " + 

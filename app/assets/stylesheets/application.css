@@ -394,16 +394,6 @@ body {
 	margin-top: -10px;
 }
 
-.note_tag {
-	float: left;
-	display: inline-block;
-	background-color: #C3E0F7;
-	border: 1px solid #A9C5DB;
-	padding: 2px;
-	margin: 1px;
-	border-radius: 10px;
-}
-
 .status_bar {
 	height: 30px;
 	margin-right: 10px;
@@ -447,7 +437,8 @@ body {
 	float: left;
 	display: inline-block;
 	width: 55%;
-	height: 400px;
+  min-height: 200px;
+	max-height: 400px;
 	border-radius: 5px;
 	box-shadow: 7px 7px 5px #BCBCBC;
 }
@@ -472,10 +463,11 @@ body {
 	margin: 20px;
 	margin-top: 0px;
 	padding-top: 10px;
-	height: 320px;
+	max-height: 320px;
 	outline: none;
 	resize: none;
 	font-size: 14px;
+  overflow-y: scroll;
 }
 
 .todo {
@@ -496,10 +488,27 @@ body {
 }
 
 .tags_area {
-  float: left;
+  position: relative;
   display: inline-block;
+  white-space: nowrap;
+  height: 23px;
+  width: 450px;
   overflow-x: scroll;
+  overflow-y: hidden;
   margin-top: -2px;
+}
+
+.tags_area::-webkit-scrollbar {
+  display: none;
+}
+
+.note_tag {
+	display: inline-block;
+	background-color: #C3E0F7;
+	border: 1px solid #A9C5DB;
+	padding: 2px;
+	margin: 1px;
+	border-radius: 10px;
 }
 
 .changeMenu {

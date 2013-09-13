@@ -27,6 +27,7 @@ AlwaysNote.Views.Navbar = Backbone.View.extend({
 				AlwaysNote.currentView = view;
 				$('.note').html(view.render().$el);
 				$('.note').show();
+        $('.markup_bar').hide();
 				AlwaysNote.highlightedNote = $('tr#note' + newNote.id);
 				AlwaysNote.highlightedNote.addClass("highlighted_note");
 			},

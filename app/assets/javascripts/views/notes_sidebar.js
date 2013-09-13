@@ -128,7 +128,7 @@ AlwaysNote.Views.NotesSidebar = Backbone.View.extend({
 		$(event.currentTarget).addClass("highlighted_note");
 		AlwaysNote.highlightedNote = $(event.currentTarget);
 		var id = parseInt($(event.currentTarget).attr("data-id"));
-		AlwaysNote.currentNote = this.notes.get(id);
+		AlwaysNote.currentNote = AlwaysNote.notes.get(id);
 		//Make individual note view stuff happen here
 		var show = new AlwaysNote.Views.NoteShow();
 		$('.note').html(show.render().$el);
